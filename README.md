@@ -1,2 +1,2 @@
 # so_long
-Y gracias por todo el pescado!
+And thanks for all the fish!
