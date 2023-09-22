@@ -4,5 +4,6 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 
 // Contenido del repositorio:
 - Carpeta de mapas
+- GetNextLine
 
 ~ Made by sadoming ~
