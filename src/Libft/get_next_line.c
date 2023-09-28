@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:06:43 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/21 16:01:15 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:19:20 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*gnl_free(char *to_free, char *tmp)
 {
@@ -25,21 +25,7 @@ char	*gnl_free(char *to_free, char *tmp)
 	return (NULL);
 }
 
-size_t	gnl_cnt_tojump(const char *str)
-{
-	size_t	cnt;
-
-	cnt = 0;
-	if (!str)
-		return (0);
-	while (str[cnt] && str[cnt] != '\n')
-		cnt++;
-	if (str[cnt] == '\n')
-		cnt++;
-	return (cnt);
-}
-
-char	*ft_get_readed(int fd, char *store)
+char	*get_readed(int fd, char *store)
 {
 	int		btrd;
 	char	*tmp;
@@ -48,7 +34,7 @@ char	*ft_get_readed(int fd, char *store)
 	tmp = malloc((BUFFER_SIZE) * sizeof(char) + 1);
 	if (!tmp)
 		return (gnl_free(store, 0));
-	while (btrd > 0 && (gnl_contains(store, '\n') != 0))
+	while (btrd > 0 && (ft_strchr(store, '\n') == NULL))
 	{
 		btrd = read(fd, tmp, BUFFER_SIZE);
 		if (btrd == -1)
@@ -56,7 +42,7 @@ char	*ft_get_readed(int fd, char *store)
 		if (btrd > 0)
 		{
 			tmp[btrd] = '\0';
-			store = gnl_join(store, tmp);
+			store = ft_strjoin(store, tmp);
 			if (!store)
 				return (gnl_free(store, tmp));
 		}
@@ -67,27 +53,27 @@ char	*ft_get_readed(int fd, char *store)
 
 char	*get_next_line(int fd)
 {
-	static char	*store;
+	static char	*store[4096];
 	char		*line;
 	size_t		cnt;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	store = ft_get_readed(fd, store);
-	if (!store)
-		return (gnl_free(store, 0));
-	if (gnl_strlen(store) == 0)
+	store[fd] = get_readed(fd, store[fd]);
+	if (!store[fd])
+		return (gnl_free(store[fd], 0));
+	if (ft_strllen(store[fd]) == 0)
 	{
-		store = gnl_free(store, 0);
+		store[fd] = gnl_free(store[fd], 0);
 		return (NULL);
 	}
-	cnt = gnl_cnt_tojump(store);
-	line = gnl_strlcpy(store, cnt);
+	cnt = ft_cnttoch_in(store[fd], '\n');
+	line = ft_strcpyl(store[fd], cnt);
 	if (!line)
 	{
-		store = gnl_free(store, 0);
+		store[fd] = gnl_free(store[fd], 0);
 		return (NULL);
 	}
-	store = gnl_strcut(store);
+	store[fd] = ft_strcut(store[fd], '\n');
 	return (line);
 }
