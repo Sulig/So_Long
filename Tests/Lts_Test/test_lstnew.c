@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   test_lstnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 19:11:30 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 16:31:11 by sadoming         ###   ########.fr       */
+/*   Created: 2023/06/06 13:44:19 by sadoming          #+#    #+#             */
+/*   Updated: 2023/06/20 13:25:57 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "test_libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	test_lstnew(void)
 {
-	int		len;
-	int		cnt;
-	char	*join;
+	int		pass;
+	t_list	*nn;
 
-	join = malloc((ft_strllen(s1) + ft_strllen(s2)) + 1);
-	if (!join)
-		return (NULL);
-	len = 0;
-	cnt = 0;
-	if (s1)
-		while (s1[cnt])
-			join[len++] = s1[cnt++];
-	cnt = 0;
-	if (s2)
-		while (s2[cnt])
-			join[len++] = s2[cnt++];
-	join[len] = '\0';
-	return (join);
+	nn = ft_lstnew(NULL);
+	if (!nn)
+	{
+		printf("\033[91m\tKO!\n Maybe the malloc chrash?\n");
+		pass = 0;
+	}
+	else
+	{
+		if (nn->content)
+		{
+			printf("\033[91m\tKO!\n content is not NULL\n");
+			pass = 0;
+		}
+		else
+		{
+			printf("\033[92m\tOK\n");
+			pass = 1;
+		}
+	}
+	free(nn);
+	return (1);
 }

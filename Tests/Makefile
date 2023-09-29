@@ -5,41 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/28 17:17:46 by sadoming          #+#    #+#              #
-#    Updated: 2023/09/29 17:40:03 by sadoming         ###   ########.fr        #
+#    Created: 2023/09/06 19:55:18 by sadoming          #+#    #+#              #
+#    Updated: 2023/09/27 18:23:46 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = arch.a
-CFLAGS = -Wall -Wextra -Werror -g
-#-----------------------------#
-# Sources:
-MAK = Makefile
-LIB = so_long.h
+NAME = test_libft.a
+DIR = ./GetNextLine/
+CFLAGS = -Wall -Wextra -Werror
 
-SRC = so_long_main.c ft_check_file.c ft_free.c ft_man_struc.c
-OBJ = $(SRC:%.c=%.o)
+MAK = Makefile
+LIB = test_libft.h $(DIR)get_next_line.h
+
+SRC = test_libft_main.c test_myapp_str.c test_strlen.c test_bzero.c test_strchr.c test_strrchr.c\
+	 test_strncmp.c test_strnstr.c test_atoi.c test_strdup.c test_substr.c test_strjoin.c\
+	 test_split.c test_itoa.c
+
+BONUS = test_lstcnt_tn.c test_lstnew.c test_lstsize.c test_lstadd_front.c test_lstlast.c test_lstadd_back.c\
+			test_lstdelone.c test_lstclear.c test_lstiter.c test_lstmap.c
+
+OBJ = $(patsubst %.c, %.o, $(SRC))
+OBJB = $(patsubst %.c, %.o, $(BONUS))
 #------------------------------------------------------------------------------#
 
-all: $(NAME)
+all: $(NAME) bonus
 
-%.o : %.c $(MAK) $(LIB)
+%.o : %.c $(LIB) $(MAK)
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "\033[1;32m SRC Compiled Successfully\033[1;97m\n"
+	@echo "\033[1;32m Tests Compiled Successfully\033[1;97m\n"
 
-#-------------------------------------------------------------#
-norm:
-	@echo "\n\033[1;93m~ Norminette:"
-	@norminette $(SRC)
-	@norminette -R CheckForbiddenSourceHeader $(SRC)
-	@echo "\033[1;32m ~ OK"
-	@echo "\033[0;39m\n"
-#-------------------------------------------------------------#
+bonus: $(OBJB)
+	@ar rc $(NAME) $(OBJB)
+	@echo "\033[1;32m Tests for bonus Compiled Successfully\033[1;97m\n"
+
 clean:
 	@/bin/rm -f *.o
+	@/bin/rm -f $(DIR)/*.o
 
 fclean : clean
 	@/bin/rm -f $(NAME)
@@ -47,5 +51,5 @@ fclean : clean
 
 re: fclean all
 
-.PHONY: all clean fclean norm re
+.PHONY: all bonus clean fclean re
 # ******************************************* #

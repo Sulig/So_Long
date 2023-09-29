@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   test_myapp_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 19:11:30 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 16:31:11 by sadoming         ###   ########.fr       */
+/*   Created: 2023/06/19 17:54:29 by sadoming          #+#    #+#             */
+/*   Updated: 2023/06/19 18:18:44 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "test_libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	test_myapp_str(char *you, char *exp)
 {
+	int		pass;
 	int		len;
 	int		cnt;
-	char	*join;
 
-	join = malloc((ft_strllen(s1) + ft_strllen(s2)) + 1);
-	if (!join)
-		return (NULL);
-	len = 0;
+	pass = 1;
 	cnt = 0;
-	if (s1)
-		while (s1[cnt])
-			join[len++] = s1[cnt++];
-	cnt = 0;
-	if (s2)
-		while (s2[cnt])
-			join[len++] = s2[cnt++];
-	join[len] = '\0';
-	return (join);
+	len = strlen(exp) + 1;
+	while (cnt < len)
+	{
+		if (you[cnt] != exp[cnt])
+			pass = 0;
+		cnt++;
+	}
+	return (pass);
 }

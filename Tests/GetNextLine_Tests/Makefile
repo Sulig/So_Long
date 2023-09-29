@@ -5,39 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/28 17:17:46 by sadoming          #+#    #+#              #
-#    Updated: 2023/09/29 17:40:03 by sadoming         ###   ########.fr        #
+#    Created: 2023/09/06 19:55:18 by sadoming          #+#    #+#              #
+#    Updated: 2023/09/27 18:23:46 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = arch.a
+NAME = test_getnextline.a
 CFLAGS = -Wall -Wextra -Werror -g
-#-----------------------------#
-# Sources:
-MAK = Makefile
-LIB = so_long.h
 
-SRC = so_long_main.c ft_check_file.c ft_free.c ft_man_struc.c
-OBJ = $(SRC:%.c=%.o)
+MAK = Makefile
+LIB = test_getnextline.h
+
+SRC = test_getnextline_main.c test_utils.c
+OBJ = $(patsubst %.c, %.o, $(SRC))
 #------------------------------------------------------------------------------#
 
 all: $(NAME)
 
-%.o : %.c $(MAK) $(LIB)
+%.o : %.c $(LIB) $(MAK)
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "\033[1;32m SRC Compiled Successfully\033[1;97m\n"
+	@echo "\033[1;32m Tests Compiled Successfully\033[1;97m\n"
 
-#-------------------------------------------------------------#
-norm:
-	@echo "\n\033[1;93m~ Norminette:"
-	@norminette $(SRC)
-	@norminette -R CheckForbiddenSourceHeader $(SRC)
-	@echo "\033[1;32m ~ OK"
-	@echo "\033[0;39m\n"
-#-------------------------------------------------------------#
 clean:
 	@/bin/rm -f *.o
 
@@ -47,5 +38,5 @@ fclean : clean
 
 re: fclean all
 
-.PHONY: all clean fclean norm re
+.PHONY: all bonus clean fclean re
 # ******************************************* #

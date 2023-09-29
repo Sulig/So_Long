@@ -6,41 +6,53 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/28 20:26:48 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:41:22 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	ft_check_file(char *file)
+static int	ft_check_map(char *file, t_map *map)
 {
 	int		fd;
-	size_t	size;
 
-	if (ft_check_format(file))
+	fd = open(file, O_RDONLY);
+	map = ft_fill_map(fd, map);
+	if (map->map)
 	{
-		fd = open(file, O_RDONLY);
-		size = ft_check_size(fd);
-		if (size != 0)
-			if (fill_map(fd, size))
-				ft_printf("OK\n");
-		close(fd);
+		if (ft_check_size(map))
+			if (ft_check_sym(map))
+				if (ft_check_minstat(map))
+					ft_printf("OK\n");
 	}
-	else
-		fd = 0;
+	close(fd);
+	return (0);
 }
 
 int	main(int argc, char **args)
 {
-	if (argc == 2)
-		ft_check_file(args[1]);
-	else
+	t_map	*map;
+
+	map = NULL;
+	if (argc != 2)
 	{
 		color('r');
 		ft_printf("Error\nIncorrect number of arguments\n");
 		color('y');
 		ft_printf("Please introduce ONE file .ber");
 		ft_printf(" like this example:\n./so_long map.ber\n");
+	}
+	else
+	{
+		if (ft_check_format(args[1]))
+		{
+			map = ft_new_map(map);
+			if (map)
+			{
+				if (ft_check_map(args[1], map))
+					ft_printf("Ok\n");
+			}
+		}
 	}
 	return (0);
 }

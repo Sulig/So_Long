@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/09/28 20:31:07 by sadoming         ###   ########.fr        #
+#    Updated: 2023/09/29 19:31:40 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,26 +56,27 @@ $(NAME): $(MAK) $(ARL) $(AR)
 	@echo "\033[1;35m So_Long is ready!\033[1;97m\n"
 #-------------------------------------------------------------#
 norm:
-	@echo "\n\033[1;93m~ Norminette:"
 	@make norm -C $(DIR)
 	@make norm -C $(LIBFT)
 	@echo "\033[1;32m ~ Norminette OK"
 	@echo "\033[0;39m\n"
 #-------------------------------------------------------------#
 run: $(NAME)
+	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
 	@./$(NAME) $(MAP)
-	@make fclean
-
-leaks: $(NAME)
-	@echo "\033[1;35m"
-	@leaks -atExit -- ./$(NAME) $(MAP)
-	@echo "\033[0;39m\n"
-	@make fclean
 
 # ******************************************************************************* #
 # Debuging region:
 debug: $(NAME)
-	@lldb $(NAME)
+	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
+	@lldb $(NAME) $(MAP)
+
+leaks: $(NAME)
+	@echo "\033[1;34m Running ./$(NAME) $(MAP)"
+	@echo "\033[1;35m\n"
+	@leaks -atExit -- ./$(NAME) $(MAP)
+	@echo "\033[0;39m\n"
+	@make fclean
 
 valgrind: $(NAME)
 	@valgrind ./$(NAME)

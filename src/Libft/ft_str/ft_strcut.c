@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 19:11:30 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 16:31:11 by sadoming         ###   ########.fr       */
+/*   Created: 2023/09/29 17:12:32 by sadoming          #+#    #+#             */
+/*   Updated: 2023/09/29 17:56:21 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strcut(char *str, char cut, char mode, char inc)
 {
-	int		len;
-	int		cnt;
-	char	*join;
-
-	join = malloc((ft_strllen(s1) + ft_strllen(s2)) + 1);
-	if (!join)
+	if (!str)
 		return (NULL);
-	len = 0;
-	cnt = 0;
-	if (s1)
-		while (s1[cnt])
-			join[len++] = s1[cnt++];
-	cnt = 0;
-	if (s2)
-		while (s2[cnt])
-			join[len++] = s2[cnt++];
-	join[len] = '\0';
-	return (join);
+	if (mode == '<')
+	{
+		if (inc == 'y' || inc == 'Y')
+			str[ft_cnttoch_in(str, cut)] = '\0';
+		else
+			str[ft_cnttoch_out(str, cut)] = '\0';
+	}
+	else if (mode == '>')
+	{
+		if (inc == 'y' || inc == 'Y')
+			return (str + ft_cnttoch_out(str, cut));
+		else
+			return (str + ft_cnttoch_out(str, cut));
+	}
+	return (str);
 }

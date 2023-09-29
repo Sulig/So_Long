@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:27:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/28 20:23:00 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:34:01 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
+char	*ft_strcut(char *str, char cut, char mode, char inc);
 char	*ft_strdup(const char *s1);
 char	*ft_strcpyl(const char *s1, size_t len);
-char	*ft_strcut(char *str, int ch);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_substr(const char*s, unsigned int start, size_t len);
@@ -67,8 +67,6 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
-char	*gnl_free(char *to_free, char *tmp);
-char	*get_readed(int fd, char *store);
 char	*get_next_line(int fd);
 
 void	ft_lstclear(t_list **lst, void (*del)(void *));

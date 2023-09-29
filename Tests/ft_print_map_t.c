@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_print_map_t.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 19:11:30 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 16:31:11 by sadoming         ###   ########.fr       */
+/*   Created: 2023/09/29 18:59:29 by sadoming          #+#    #+#             */
+/*   Updated: 2023/09/29 19:00:07 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../src/so_long.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	ft_print_map_t(t_map *map)
 {
-	int		len;
-	int		cnt;
-	char	*join;
+	size_t	size;
 
-	join = malloc((ft_strllen(s1) + ft_strllen(s2)) + 1);
-	if (!join)
-		return (NULL);
-	len = 0;
-	cnt = 0;
-	if (s1)
-		while (s1[cnt])
-			join[len++] = s1[cnt++];
-	cnt = 0;
-	if (s2)
-		while (s2[cnt])
-			join[len++] = s2[cnt++];
-	join[len] = '\0';
-	return (join);
+	size = 0;
+	ft_printf("Len of map: %u\n", map->len);
+	ft_printf("Size of map: %u\n\n", map->size);
+	while (size < map->size)
+	{
+		ft_printf("|%u|~|%s|\n", size, map->map[size]);
+		size++;
+	}
+	ft_printf("\n");
 }

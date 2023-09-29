@@ -6,13 +6,13 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:06:43 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/28 19:19:20 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:44:41 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*gnl_free(char *to_free, char *tmp)
+static char	*gnl_free(char *to_free, char *tmp)
 {
 	if (to_free)
 		free(to_free);
@@ -25,7 +25,31 @@ char	*gnl_free(char *to_free, char *tmp)
 	return (NULL);
 }
 
-char	*get_readed(int fd, char *store)
+static char	*gnl_strcut(char *str, int ch)
+{
+	char	*cut;
+	size_t	cnt;
+	size_t	len;
+	size_t	size;
+
+	if (!str)
+		return (NULL);
+	len = 0;
+	cnt = ft_cnttoch_in(str, ch);
+	size = ft_strllen(str + cnt);
+	if (size == 0)
+		return (gnl_free(str, 0));
+	cut = malloc(sizeof(char) * size + 1);
+	if (!cut)
+		return (gnl_free(str, 0));
+	while (str[cnt])
+		cut[len++] = str[cnt++];
+	cut[len] = '\0';
+	free(str);
+	return (cut);
+}
+
+static char	*get_readed(int fd, char *store)
 {
 	int		btrd;
 	char	*tmp;
@@ -74,6 +98,6 @@ char	*get_next_line(int fd)
 		store[fd] = gnl_free(store[fd], 0);
 		return (NULL);
 	}
-	store[fd] = ft_strcut(store[fd], '\n');
+	store[fd] = gnl_strcut(store[fd], '\n');
 	return (line);
 }
