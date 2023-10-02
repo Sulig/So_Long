@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:53:49 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 19:43:27 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:07:04 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,33 @@ int	ft_check_minstat(t_map *map)
 		return (0);
 	}
 	return (1);
+}
+
+int	ft_check_closed(t_map *map)
+{
+	int		ok;
+	size_t	cnt;
+	size_t	len;
+
+	ok = 1;
+	cnt = 0;
+	while (ok == 1 && map->map[cnt])
+	{
+		len = 0;
+		while (ok == 1 && map->map[cnt][len])
+		{
+			if (map->map[cnt][len] != '1')
+			{
+				if (cnt == 0 || cnt == (map->size - 1))
+					ok = 0;
+				if (len == 0 || len == (ft_strlen(map->map[cnt]) - 1))
+					ok = 0;
+			}
+			len++;
+		}
+		cnt++;
+	}
+	if (ok == 0)
+		ft_printf("\033[1;31mError\nThe map is not closed!\n");
+	return (ok);
 }

@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/09/29 19:31:40 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/02 20:08:51 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,21 @@ MAP = ./maps/exemple.ber
 all:
 	@make norm
 	@make $(NAME)
+	@make run
+
+#-------------------------------------------------------------#
+norm:
+	@make norm -C $(DIR)
+	@make norm -C $(LIBFT)
+	@echo "\033[1;32m ~ Norminette OK"
+	@echo "\033[0;39m\n"
+
+#-------------------------------------------------------------#
+run: $(NAME)
+	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
+	@./$(NAME) $(MAP)
+
+#-------------------------------------------------------------#
 
 # ******************************************************************************* #
 # Compiling Region:
@@ -55,15 +70,7 @@ $(NAME): $(MAK) $(ARL) $(AR)
 	@gcc -o $(NAME) $(ARL) $(AR)
 	@echo "\033[1;35m So_Long is ready!\033[1;97m\n"
 #-------------------------------------------------------------#
-norm:
-	@make norm -C $(DIR)
-	@make norm -C $(LIBFT)
-	@echo "\033[1;32m ~ Norminette OK"
-	@echo "\033[0;39m\n"
-#-------------------------------------------------------------#
-run: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
-	@./$(NAME) $(MAP)
+
 
 # ******************************************************************************* #
 # Debuging region:
@@ -88,12 +95,16 @@ clean:
 	@make clean -C $(LIBFT)
 	@make clean -C $(DIR)
 
-fclean: clean
+dsrm:
+	@/bin/rm -f .DS_Store
+	@/bin/rm -f ./maps/DS_Store
+	@/bin/rm -f ./sprites/DS_Store
+	@/bin/rm -f $(DIRD)MinilibX/DS_Store
+
+fclean: clean dsrm
 	@make fclean -C $(LIBFT)
 	@make fclean -C $(DIR)
 	@/bin/rm -f $(NAME)
-	@/bin/rm -frd debug.out.dSYM
-	@/bin/rm -f .DS_Store
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean

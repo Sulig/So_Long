@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 19:41:22 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/02 20:02:33 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static int	ft_check_map(char *file, t_map *map)
 {
 	int		fd;
+	int		ok;
 
+	ok = 0;
 	fd = open(file, O_RDONLY);
 	map = ft_fill_map(fd, map);
 	if (map->map)
@@ -23,10 +25,12 @@ static int	ft_check_map(char *file, t_map *map)
 		if (ft_check_size(map))
 			if (ft_check_sym(map))
 				if (ft_check_minstat(map))
-					ft_printf("OK\n");
+					if (ft_check_closed(map))
+						if (ft_check_map_sol(map))
+							ok = 1;
 	}
 	close(fd);
-	return (0);
+	return (ok);
 }
 
 int	main(int argc, char **args)

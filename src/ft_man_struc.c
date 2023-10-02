@@ -6,11 +6,23 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 19:05:40 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:53:10 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	*ft_free_map(t_map *map)
+{
+	size_t	cnt;
+
+	cnt = 0;
+	while (map->map[--map->size])
+		free(map->map[map->size]);
+	free(map->map);
+	free(map);
+	return (NULL);
+}
 
 t_map	*ft_new_map(t_map *map)
 {

@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lstcnt_tn.c                                   :+:      :+:    :+:   */
+/*   check_map_sol.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/21 16:38:00 by sadoming          #+#    #+#             */
-/*   Updated: 2023/06/21 19:06:55 by sadoming         ###   ########.fr       */
+/*   Created: 2023/10/02 17:09:49 by sadoming          #+#    #+#             */
+/*   Updated: 2023/10/02 17:12:52 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_libft.h"
+#include "so_long.h"
 
-void	test_lstcnt_tn(void *cnt)
-{
-	char	*null;
-
-	null = "\0";
-	cnt = null;
-}
+int	ft_che
