@@ -11,7 +11,27 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 
 ***
 ## Comandos:
+### Debuggeador:
 
+    make debug
+
+*Valgrind (Solo funcionara si tienes valgrind)*
+
+    make valgrind
+
+### Limpiar archivos innecessarios:
+
+Limpia solo *.o y los .out
+
+    make clean
+
+Limpieza profunda + borrado de .out.dSYM
+
+    make fclean
+    
+Igual que fclean + limpia la pantalla
+
+    make clear
 ***
 ~ Made by sadoming ~
 ***
