@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:13:15 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/03 14:21:54 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/03 20:27:26 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,29 @@ static void	ft_locate(t_map *map)
 	}
 }
 
-static char	*ft_fill_sol(t_map *map)
+int	ft_check_sol(char **map, t_lcn str, t_lcn exit, size_t x, size_t y)
 {
-	size_t	len;
-	size_t	size;
-
-	size = 0;
-	map->sol = ft_calloc(sizeof(char *), map->size);
-	if (!map->sol)
-		return (NULL);
-	while (map->map[size])
+	ft_printf("ACT: |%c| on [%u][%u]\n", map[y][x], y, x);
+	if (map[y][x])
+		if (x == exit.x_pos && y == exit.y_pos)
+			return (1);
+	if (!map[y][x + 1])
 	{
-		len = 0;
-		map->sol[size] = ft_strdup(map->map[size]);
-		while (map->sol[size][len])
-		{
-			if (map->sol[size][len] == 'C')
-				map->sol[size][len] == '0';
-			len++;
-		}
+		x = 0;
+		y++;
 	}
+	ft_printf("%i ", ft_check_sol(map, str, exit, x + 1, y));
+	return (1);
 }
 
 int	ft_check_all(t_map *map)
 {
-	t_location	coin;
-	int			ok;
-	size_t		len;
-	size_t		size;
+	t_lcn	coin;
+	int		ok;
+	size_t	len;
+	size_t	size;
 
-	ok = 1;
+	ok = ft_check_sol(map->sol, map->start, map->exit, 0, 0);
 	size = 0;
 	while (map->map[size] && ok == 1)
 	{
@@ -76,7 +69,11 @@ int	ft_check_all(t_map *map)
 		while (map->map[size][len] && ok == 1)
 		{
 			if (map->map[size][len] == 'C')
-				ok = 1;
+			{
+				coin.x_pos = len;
+				coin.y_pos = size;
+				ok = ft_check_sol(map->sol, map->start, coin, coin.x_pos, coin.y_pos);
+			}
 			len++;
 		}
 		size++;
@@ -86,12 +83,14 @@ int	ft_check_all(t_map *map)
 
 int	ft_check_map_sol(t_map *map)
 {
+	int		ok;
+
+	ok = 0;
 	ft_locate(map);
+	ft_print_map_t(map);
 	if (ft_check_all(map))
-		return (1);
-	else
-	{
+		ok = 1;
+	if (ok == 0)
 		ft_printf("\033[1;31mError\nThe map don't have solution!\n");
-		return (0);
-	}
+	return (ok);
 }

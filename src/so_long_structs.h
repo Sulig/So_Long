@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/03 14:08:13 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/03 20:20:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "so_long.h"
 
-typedef	struct	s_location
+typedef	struct	s_lcn
 {
 	size_t		x_pos;
 	size_t		y_pos;
-}				t_location;
+}				t_lcn;
 
 typedef struct	s_map
 {
@@ -30,9 +30,9 @@ typedef struct	s_map
 	size_t		coins;
 	size_t		exits;
 	size_t		players;
-	t_location	start;
-	t_location	exit;
-	t_location	act;
+	t_lcn		start;
+	t_lcn		exit;
+	t_lcn		act;
 }				t_map;
 
 #endif

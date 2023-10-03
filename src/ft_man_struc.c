@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/03 14:10:12 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/03 20:26:28 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ t_map	*ft_new_map(t_map *map)
 	return (map);
 }
 
+static int	ft_fill_sol(t_map *map)
+{
+	size_t	len;
+	size_t	size;
+
+	size = 0;
+	map->sol = ft_calloc(sizeof(char *), map->size);
+	if (!map->sol)
+		return (0);
+	while (map->map[size])
+	{
+		len = 0;
+		map->sol[size] = ft_strdup(map->map[size]);
+		while (map->sol[size][len])
+		{
+			if (map->sol[size][len] == 'C' || map->sol[size][len] == 'P')
+				map->sol[size][len] = '0';
+			if (map->sol[size][len] == 'E')
+				map->sol[size][len] = '0';
+			len++;
+		}
+		size++;
+	}
+	ft_print_sol_t(map->sol);
+	return (1);
+}
+
 t_map	*ft_fill_map(int fd, t_map *map)
 {
 	char	*file;
@@ -55,5 +82,8 @@ t_map	*ft_fill_map(int fd, t_map *map)
 		tmp = get_next_line(fd);
 	}
 	map->map = ft_split(file, '\n');
-	return (map);
+	if (map)
+		if (ft_fill_sol(map))
+			return (map);
+	return (NULL);
 }

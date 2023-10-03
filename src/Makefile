@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 17:17:46 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/03 13:25:54 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/03 19:13:54 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 MAK = Makefile
 LIB = so_long.h so_long_structs.h
 
-SRC = so_long_main.c ft_check_file.c ft_check_map_sol.c ft_man_struc.c
+SRC = so_long_main.c ft_check_file.c ft_check_map_sol.c ft_man_struc.c ft_print_map_t.c
 OBJ = $(SRC:%.c=%.o)
 #------------------------------------------------------------------------------#
 
