@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:46:14 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/02 17:14:51 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:06:18 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,7 @@
 
 # include <fcntl.h>
 # include "./Libft/libft.h"
-
-typedef struct	s_map
-{
-	char		**map;
-	size_t		len;
-	size_t		size;
-	size_t		coins;
-	size_t		exits;
-	size_t		players;
-}				t_map;
+# include "./so_long_structs.h"
 
 void	color(char color);
 

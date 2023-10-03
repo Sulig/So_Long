@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/02 20:02:33 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:29:56 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **args)
 			if (map)
 			{
 				if (ft_check_map(args[1], map))
-					ft_printf("Ok\n");
+					ft_printf("\033[1;32mOk\n");
 			}
 		}
 	}

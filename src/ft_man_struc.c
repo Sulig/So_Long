@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/02 17:53:10 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:10:12 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ t_map	*ft_new_map(t_map *map)
 	if (!map)
 		return (NULL);
 	map->map = NULL;
+	map->sol = NULL;
 	map->len = 0;
 	map->size = 0;
 	map->coins = 0;
 	map->exits = 0;
 	map->players = 0;
+	map->act.x_pos = 0;
+	map->act.y_pos = 0;
 	return (map);
 }
 
