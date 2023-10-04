@@ -5,41 +5,48 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/28 17:17:46 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/04 18:26:12 by sadoming         ###   ########.fr        #
+#    Created: 2023/05/02 16:14:42 by sadoming          #+#    #+#              #
+#    Updated: 2023/09/29 17:50:13 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = arch.a
+NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror -g
-#-----------------------------#
-# Sources:
+# ---------------- #
+# Directories:
+STR = ft_str/
+# ---------------- #
 MAK = Makefile
-LIB = so_long.h so_long_structs.h
+LIB = libft.h
 
-SRC = so_long_main.c ft_check_file.c ft_check_map_sol.c ft_man_struc.c
-OBJ = $(SRC:%.c=%.o)
-#------------------------------------------------------------------------------#
+SRC = ft_atoi.c ft_calloc.c ft_itoa.c ft_printf.c ft_switch_cast.c get_next_line.c
 
+SRC += $(STR)ft_split.c $(STR)ft_strchr.c $(STR)ft_strcpy.c $(STR)ft_strjoin.c\
+	   $(STR)ft_strcut.c $(STR)ft_strlen.c $(STR)ft_strstr.c $(STR)ft_strtrim.c\
+	   $(STR)ft_substr.c 
+	
+OBJ = $(patsubst %.c, %.o, $(SRC))
+# ********************************************* #
 all: $(NAME)
-
-%.o : %.c $(MAK) $(LIB)
+#----------------------#
+%.o : %.c $(LIB) $(MAK)
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "\033[1;32m SRC Compiled Successfully\033[1;97m\n"
+	@echo "\033[1;32m Libft Compiled Successfully\033[1;97m\n"
 
 #-------------------------------------------------------------#
 norm:
 	@echo "\n\033[1;93m~ Norminette:"
 	@norminette $(SRC)
 	@norminette -R CheckForbiddenSourceHeader $(SRC)
-	@echo "\033[1;32m ~ OK"
-	@echo "\033[0;39m\n"
+	@echo "\033[1;32m ~ OK\n"
 #-------------------------------------------------------------#
 clean:
 	@/bin/rm -f *.o
+	@/bin/rm -f $(STR)*.o
+	@/bin/rm -f $(LST)*.o
 
 fclean : clean
 	@/bin/rm -f $(NAME)
@@ -47,5 +54,5 @@ fclean : clean
 
 re: fclean all
 
-.PHONY: all clean fclean norm re
+.PHONY: all bonus clean fclean re
 # ******************************************* #

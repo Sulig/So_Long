@@ -6,18 +6,18 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 17:17:46 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/04 18:26:12 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/04 19:58:15 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = arch.a
+NAME = gen.a
 CFLAGS = -Wall -Wextra -Werror -g
 #-----------------------------#
 # Sources:
 MAK = Makefile
-LIB = so_long.h so_long_structs.h
+LIB = map_generator.h structs.h
 
-SRC = so_long_main.c ft_check_file.c ft_check_map_sol.c ft_man_struc.c
+SRC = map_generator_main.c ft_print_map_t.c 
 OBJ = $(SRC:%.c=%.o)
 #------------------------------------------------------------------------------#
 

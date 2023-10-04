@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 17:50:03 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:02:17 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ t_map	*ft_new_map(t_map *map)
 	map->len = 0;
 	map->size = 0;
 	map->coins = 0;
-	map->exits = 0;
-	map->players = 0;
-	map->act.x_pos = 0;
-	map->act.y_pos = 0;
 	return (map);
 }
 
@@ -60,25 +56,11 @@ static void	ft_fill_sol(t_map *map)
 	}
 }
 
-t_map	*ft_fill_map(int fd, t_map *map)
+t_map	*ft_gen_map(t_map *map)
 {
-	char	*file;
-	char	*tmp;
-
-	file = NULL;
-	tmp = get_next_line(fd);
-	while (tmp)
-	{
-		file = ft_strjoin(file, tmp);
-		free(tmp);
-		tmp = get_next_line(fd);
-	}
-	map->map = ft_split(file, '\n');
-	if (!map->map)
+	map = ft_new_map(map);
+	if (!map)
 		return (NULL);
-	map->sol = ft_split(file, '\n');
-	if (!map->sol)
-		return (NULL);
-	ft_fill_sol(map);
-	return (map);
+	map->size = (3 + rand() % 100);
+	map->len = (5 + rand() % 100);
 }

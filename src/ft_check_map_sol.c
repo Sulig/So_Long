@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:13:15 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/03 20:27:26 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:25:40 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,44 @@ static void	ft_locate(t_map *map)
 	}
 }
 
-int	ft_check_sol(char **map, t_lcn str, t_lcn exit, size_t x, size_t y)
+static void	ft_path(char **fill, t_lcn size, size_t y, size_t x)
 {
-	ft_printf("ACT: |%c| on [%u][%u]\n", map[y][x], y, x);
-	if (map[y][x])
-		if (x == exit.x_pos && y == exit.y_pos)
-			return (1);
-	if (!map[y][x + 1])
-	{
-		x = 0;
-		y++;
-	}
-	ft_printf("%i ", ft_check_sol(map, str, exit, x + 1, y));
-	return (1);
+	if (y < 0 || x < 0)
+		return ;
+	if (y == size.y_pos && x == size.x_pos)
+		return ;
+	if (fill[y][x] != '0')
+		return ;
+	if (fill[y][x])
+		fill[y][x] = '+';
+	ft_path(fill, size, y, x + 1);
+	ft_path(fill, size, y, x - 1);
+	ft_path(fill, size, y - 1, x);
+	ft_path(fill, size, y + 1, x);
 }
 
-int	ft_check_all(t_map *map)
+static	int	ft_check_behind(char **map, t_lcn checkpoint)
 {
-	t_lcn	coin;
-	int		ok;
-	size_t	len;
-	size_t	size;
+	if (map[checkpoint.y_pos][checkpoint.x_pos + 1] == '+')
+		return (1);
+	if (map[checkpoint.y_pos][checkpoint.x_pos - 1] == '+')
+		return (1);
+	if (map[checkpoint.y_pos + 1][checkpoint.x_pos] == '+')
+		return (1);
+	if (map[checkpoint.y_pos - 1][checkpoint.x_pos] == '+')
+		return (1);
+	return (0);
+}
 
-	ok = ft_check_sol(map->sol, map->start, map->exit, 0, 0);
+int	ft_check_for_sol(t_map *map)
+{
+	int		ok;
+	size_t	size;
+	size_t	len;
+	t_lcn	coin;
+
+	ft_path(map->sol, map->exit, map->start.y_pos, map->start.x_pos);
+	ok = ft_check_behind(map->sol, map->exit);
 	size = 0;
 	while (map->map[size] && ok == 1)
 	{
@@ -72,7 +87,7 @@ int	ft_check_all(t_map *map)
 			{
 				coin.x_pos = len;
 				coin.y_pos = size;
-				ok = ft_check_sol(map->sol, map->start, coin, coin.x_pos, coin.y_pos);
+				ok = ft_check_behind(map->sol, coin);
 			}
 			len++;
 		}
@@ -85,10 +100,9 @@ int	ft_check_map_sol(t_map *map)
 {
 	int		ok;
 
-	ok = 0;
 	ft_locate(map);
-	ft_print_map_t(map);
-	if (ft_check_all(map))
+	ok = 0;
+	if (ft_check_for_sol(map))
 		ok = 1;
 	if (ok == 0)
 		ft_printf("\033[1;31mError\nThe map don't have solution!\n");

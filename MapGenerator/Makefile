@@ -6,12 +6,13 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/04 19:26:26 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/04 20:26:33 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-CFLAGS = -Wall -Wextra -Werror -g
+NAME = map_gen
+MAPNAME = "Gen_Map"
+CFLAGS = -Wall -Wextra -Werror -g 
 # ------------------ #
 # Directories:
 DIR = ./src
@@ -19,35 +20,22 @@ DIRD = ./src/
 
 LIBFT = ./src/Libft
 LIBFTD = ./src/Libft/
-
-MLBX = ./src/MinilibX
-MLBXD = ./src/MinilibX/
 # ------------------- #
 # Sorces:
 MAK = Makefile
 
-AR = $(DIRD)arch.a
+AR = $(DIRD)gen.a
 ARL = $(LIBFTD)libft.a
 ARML = $(MLBXD)libmlx.a
-
-MAP = ./maps/cross_map.ber
 #-------------------------------------------------------------#
-all: $(MAK)
-	@make norm
+all: $(MAK) 
 	@make $(NAME)
-	@make run
+	@make gen
 
 #-------------------------------------------------------------#
-norm:
-	@make norm -C $(DIR)
-	@make norm -C $(LIBFT)
-	@echo "\033[1;32m ~ Norminette OK"
-	@echo "\033[0;39m\n"
-
-#-------------------------------------------------------------#
-run: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
-	@./$(NAME) $(MAP)
+gen: $(NAME)
+	@echo "\033[1;34m Generating map...\n"
+	@./$(NAME) $(MAPNAME)
 
 #-------------------------------------------------------------#
 
@@ -57,31 +45,24 @@ $(ARL):
 	@echo "\033[1;93m * Compiling Libft -->\033[1;97m\n"
 	@make all -C $(LIBFT)
 
-$(ARML):
-	@echo "\033[1;93m * Compiling MiniLibX -->\033[1;97m\n"
-	@make all -C $(MLBX)
-
 $(AR):
 	@echo "\033[1;93m * Compiling SRC -->\033[1;97m\n"
 	@make all -C $(DIR)
 
 $(NAME): $(MAK) $(ARL) $(AR)
-	@echo "\033[1;93m * Making so_long -->\033[1;97m\n"
+	@echo "\033[1;93m * Making Map_Gen -->\033[1;97m\n"
 	@gcc -o $(NAME) $(ARL) $(AR)
-	@echo "\033[1;35m So_Long is ready!\033[1;97m\n"
+	@echo "\033[1;35m Map_Gen is ready!\033[1;97m\n"
 #-------------------------------------------------------------#
-
 
 # ******************************************************************************* #
 # Debuging region:
 debug: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
-	@lldb $(NAME) $(MAP)
+	@lldb $(NAME)
 
 leaks: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)"
 	@echo "\033[1;35m\n"
-	@leaks -atExit -- ./$(NAME) $(MAP)
+	@leaks -atExit -- ./$(NAME)
 	@echo "\033[0;39m\n"
 	@make fclean
 
@@ -91,17 +72,11 @@ valgrind: $(NAME)
 # ********************************************************************************* #
 # Clean region
 clean:
-	@make clean -C $(MLBX)
 	@make clean -C $(LIBFT)
 	@make clean -C $(DIR)
-
-dsrm:
 	@/bin/rm -f .DS_Store
-	@/bin/rm -f ./maps/DS_Store
-	@/bin/rm -f ./sprites/DS_Store
-	@/bin/rm -f $(DIRD)MinilibX/DS_Store
 
-fclean: clean dsrm
+fclean: clean
 	@make fclean -C $(LIBFT)
 	@make fclean -C $(DIR)
 	@/bin/rm -f $(NAME)
@@ -112,5 +87,5 @@ clear: fclean
 
 re: fclean all
 # -------------------- #
-.PHONY: all clean clear fclean debug norm re run valgrind
+.PHONY: all clean clear fclean debug leaks gen norm re valgrind
 # ********************************************************************************** #
