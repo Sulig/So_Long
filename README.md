@@ -12,6 +12,7 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 - MinilibX *Para Debian*
 - Mapas
 - Tests *(Incluye tests de mapas erroneos y mucho mas en camino)*
+- Map Generator *En camino*
 - Subject
 
 ***
