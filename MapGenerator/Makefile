@@ -6,13 +6,13 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/04 20:26:33 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/05 20:27:15 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = map_gen
-MAPNAME = "Gen_Map"
-CFLAGS = -Wall -Wextra -Werror -g 
+MAPNUM = 1
+CFLAGS = -Wall -Wextra -Werror -g
 # ------------------ #
 # Directories:
 DIR = ./src
@@ -35,7 +35,7 @@ all: $(MAK)
 #-------------------------------------------------------------#
 gen: $(NAME)
 	@echo "\033[1;34m Generating map...\n"
-	@./$(NAME) $(MAPNAME)
+	@./$(NAME) $(MAPNUM)
 
 #-------------------------------------------------------------#
 
@@ -60,13 +60,7 @@ $(NAME): $(MAK) $(ARL) $(AR)
 debug: $(NAME)
 	@lldb $(NAME)
 
-leaks: $(NAME)
-	@echo "\033[1;35m\n"
-	@leaks -atExit -- ./$(NAME)
-	@echo "\033[0;39m\n"
-	@make fclean
-
-valgrind: $(NAME)
+val: $(NAME)
 	@valgrind ./$(NAME)
 
 # ********************************************************************************* #
@@ -80,6 +74,7 @@ fclean: clean
 	@make fclean -C $(LIBFT)
 	@make fclean -C $(DIR)
 	@/bin/rm -f $(NAME)
+	@/bin/rm -frd map_gen.dSYM
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean
@@ -87,5 +82,5 @@ clear: fclean
 
 re: fclean all
 # -------------------- #
-.PHONY: all clean clear fclean debug leaks gen norm re valgrind
+.PHONY: all clean clear fclean debug leaks gen norm re val
 # ********************************************************************************** #

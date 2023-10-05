@@ -6,22 +6,35 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 21:02:17 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:29:37 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "map_generator.h"
 
-void	*ft_free_map(t_map *map)
+void	*ft_free_arr(size_t size, char **arr)
 {
-	size_t	cnt;
+	while (size--)
+		free(arr[size]);
+	free(arr);
+	return (NULL);
+}
 
-	cnt = 0;
-	while (map->map[--map->size])
-		free(map->map[map->size]);
-	free(map->map);
+void	*ft_free_all(t_map *map)
+{
+	map->map = ft_free_arr(map->size, map->map);
+	if (map->sol)
+		map->sol = ft_free_arr(map->size, map->sol);
 	free(map);
 	return (NULL);
+}
+
+static void	ft_init(t_map *map)
+{
+	map->start.x = 0;
+	map->start.y = 0;
+	map->exit.x = 0;
+	map->exit.y = 0;
 }
 
 t_map	*ft_new_map(t_map *map)
@@ -31,36 +44,30 @@ t_map	*ft_new_map(t_map *map)
 		return (NULL);
 	map->map = NULL;
 	map->sol = NULL;
-	map->len = 0;
-	map->size = 0;
+	map->size = (3 + rand() % 100);
+	map->len = (5 + rand() % 100);
 	map->coins = 0;
+	map->players = 0;
+	ft_init(map);
 	return (map);
 }
 
-static void	ft_fill_sol(t_map *map)
+void	ft_fill_sol(t_map *map)
 {
 	size_t	len;
 	size_t	size;
 
 	size = 0;
-	while (map->sol[size])
+	while (size <= map->size)
 	{
 		len = 0;
-		while (map->sol[size][len])
+		while (len <= map->len)
 		{
+			map->sol[size][len] = map->map[size][len];
 			if (map->map[size][len] != '1')
 				map->sol[size][len] = '0';
 			len++;
 		}
 		size++;
 	}
-}
-
-t_map	*ft_gen_map(t_map *map)
-{
-	map = ft_new_map(map);
-	if (!map)
-		return (NULL);
-	map->size = (3 + rand() % 100);
-	map->len = (5 + rand() % 100);
 }

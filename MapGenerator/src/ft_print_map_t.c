@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:59:29 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 19:57:32 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:07:10 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 void	ft_print_stat(t_map *map)
 {
-	ft_printf("Len of map: %u\n", map->len);
+	ft_printf("\033[1;34mLen of map: %u\n", map->len);
 	ft_printf("Size of map: %u\n\n", map->size);
-	ft_printf("Num of collectables: %u", map->coins);
+	ft_printf("Num of collectables: %u\n", map->coins);
 	ft_printf("Start are in [%u][%u]\n", map->start.y, map->start.x);
 	ft_printf("Exit are in [%u][%u]\n", map->exit.y, map->exit.x);
-	ft_printf("\nPreview of map:\n\n");
-	ft_print_map_t(map->map);
-	ft_printf("\nPreview of sol:\n\n");
-	ft_print_map_t(map->sol);
+	if (map->map)
+	{
+		ft_printf("\nPreview of map:\n\n");
+		ft_print_map_t(map->map);
+	}
+	if (map->sol)
+	{
+		ft_printf("\nPreview of sol:\n\n");
+		ft_print_map_t(map->sol);
+	}
 }
 
 void	ft_print_map_t(char **map)
