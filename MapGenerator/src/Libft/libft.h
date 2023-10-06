@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:27:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 20:21:52 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:41:33 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # endif
 
 void	ft_bzero(void *s, size_t n);
+void	*ft_free_arr(size_t size, char **words);
 void	*ft_calloc(size_t count, size_t size);
 
 int		ft_putchar(char ch);

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:59:29 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/05 18:07:10 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:58:28 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ft_print_map_t(char **map)
 		while (map[size][len])
 		{
 			if (map[size][len] == '1')
-				ft_printf("\033[1;34m#");
+				ft_printf("\033[1;34m1");
 			else if (map[size][len] == 'C')
-				ft_printf("\033[1;33m*");
+				ft_printf("\033[1;33mC");
 			else if (map[size][len] == '+')
 				ft_printf("\033[1;32m+");
 			else if (map[size][len] == '0')
