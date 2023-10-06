@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:53:49 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/03 13:30:45 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:35:38 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	ft_check_format(char *file)
 {
 	char	*format;
+	int		ok;
 
 	format = ft_strstr(file, ".ber");
+	ok = 1;
 	if (!format)
 	{
 		color('r');
@@ -24,10 +26,10 @@ int	ft_check_format(char *file)
 		color('y');
 		ft_printf("Please introduce one file .ber");
 		ft_printf(" like this example:\n./so_long map.ber\n");
-		return (0);
+		ok = 0;
 	}
-	else
-		return (1);
+	format = NULL;
+	return (ok);
 }
 
 int	ft_check_size(t_map *map)

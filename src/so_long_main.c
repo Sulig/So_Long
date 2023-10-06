@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 18:31:39 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:31:50 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	ft_check_map(char *file, t_map *map)
 
 	ok = 0;
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (ok);
 	map = ft_fill_map(fd, map);
 	if (map->map)
 	{
@@ -58,7 +60,7 @@ int	main(int argc, char **args)
 			}
 		}
 	}
-	return (0);
+	exit(0);
 }
 
 void	color(char color)

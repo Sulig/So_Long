@@ -21,7 +21,8 @@ LIBFTD = ./Libft/
 MAK = Makefile
 LIB = map_generator.h structs.h
 
-SRC = map_generator_main.c ft_check_map_sol.c ft_gen_map.c ft_man_struc.c ft_print_map_t.c 
+SRC = map_generator_main.c ft_check_map_sol.c ft_gen_map.c ft_man_struc.c ft_print_map_t.c\
+	ft_free.c
 OBJ = $(SRC:%.c=%.o)
 #------------------------------------------------------------------------------#
 all: $(NAME)

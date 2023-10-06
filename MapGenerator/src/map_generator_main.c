@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:53:25 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 20:07:39 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:36:00 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,10 @@ int	main(int argc, char **args)
 	if (argc == 2)
 		num = ft_atoi(args[1]);
 	num++;
+	cnt = 0;
 	map = ft_calloc(num, sizeof(t_map *));
 	if (map)
 	{
-		cnt = 0;
 		while (cnt < num - 1)
 		{
 			seed = (rand() % rand());
@@ -138,5 +138,6 @@ int	main(int argc, char **args)
 			seed = 0;
 		}
 	}
-	return (0);
+	map = ft_free_map_arr(map, cnt);
+	exit(0);
 }

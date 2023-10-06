@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = map_gen
-MAPNUM = 7
+MAPNUM = 0
 CFLAGS = -Wall -Wextra -Werror -g
 # ------------------ #
 # Directories:
