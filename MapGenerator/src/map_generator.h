@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:54:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 14:06:50 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:43:32 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	**ft_create_arr(size_t max_size, size_t max_len);
 
 void	*ft_free_map(t_map *map);
 t_map	*ft_new_map(t_map *map, size_t seed);
+t_map	*ft_rand_map(t_map *map, size_t seed);
 t_map	*ft_gen_map(t_map *map, size_t seed);
 
 #endif

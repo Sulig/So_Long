@@ -6,12 +6,12 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/06 18:06:48 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/06 20:06:48 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = map_gen
-MAPNUM = 1
+MAPNUM = 7
 CFLAGS = -Wall -Wextra -Werror -g
 # ------------------ #
 # Directories:
@@ -58,10 +58,10 @@ $(NAME): $(MAK) $(ARL) $(AR)
 # ******************************************************************************* #
 # Debuging region:
 debug: $(NAME)
-	@lldb $(NAME)
+	@lldb $(NAME) $(MAPNUM)
 
 val: $(NAME)
-	@valgrind ./$(NAME)
+	@valgrind ./$(NAME) $(MAPNUM)
 
 # ********************************************************************************* #
 # Clean region
@@ -74,7 +74,6 @@ fclean: clean
 	@make fclean -C $(LIBFT)
 	@make fclean -C $(DIR)
 	@/bin/rm -f $(NAME)
-	@/bin/rm -frd map_gen.dSYM
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean

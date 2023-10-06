@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:31:40 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 17:34:50 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:45:31 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_map	*ft_close_map(t_map *map)
 	return (map);
 }
 
-static t_map	*ft_rand_map(t_map *map, size_t seed)
+t_map	*ft_rand_map(t_map *map, size_t seed)
 {
 	size_t			size;
 	size_t			len;

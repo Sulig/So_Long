@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:13:15 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 18:25:40 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:32:17 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ static void	ft_path(char **fill, t_lcn size, size_t y, size_t x)
 	if (y < 0 || x < 0)
 		return ;
 	if (y == size.y_pos && x == size.x_pos)
+	{
+		if (fill[y][x])
+			fill[y][x] = '+';
 		return ;
+	}
 	if (fill[y][x] != '0')
 		return ;
 	if (fill[y][x])

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:53:25 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 18:09:17 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:07:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,25 @@ int	main(int argc, char **args)
 	int		num;
 	int		cnt;
 	size_t	seed;
-	t_map	*map;
+	t_map	**map;
 
 	num = 0;
 	map = NULL;
 	if (argc == 2)
 		num = ft_atoi(args[1]);
-	if (num == 0)
-		num++;
-	cnt = 0;
-	seed = (1 + rand() % 500);
-	srand(seed);
-	map = gen_new_map(cnt, map, seed);
-	//ft_printf("Hello?\n");
+	num++;
+	map = ft_calloc(num, sizeof(t_map *));
+	if (map)
+	{
+		cnt = 0;
+		while (cnt < num - 1)
+		{
+			seed = (rand() % rand());
+			srand(seed);
+			map[cnt] = gen_new_map(cnt, map[cnt], seed);
+			cnt++;
+			seed = 0;
+		}
+	}
 	return (0);
 }

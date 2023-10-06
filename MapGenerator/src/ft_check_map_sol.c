@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:05:18 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 16:30:03 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:45:16 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ static void ft_find_path(char **map, t_lctn exit, size_t x, size_t y)
 	if (y < 0 || x < 0 || !map[y])
 		return ;
 	if (x == exit.x && y == exit.y)
+	{
+		if (map[y][x])
+			map[y][x] = '+';
 		return ;
+	}
 	if (map[y][x] != '0')
 		return ;
 	if (map[y][x])
@@ -85,7 +89,7 @@ static int ft_check_all(t_map *map)
 	t_lctn	coin;
 
 	size = 0;
-	if (ft_check_behind(map->map, map->exit, '+') == 0)
+	if (ft_check_behind(map->sol, map->exit, '+') == 0)
 		return (0);
 	while (map->map[size])
 	{
@@ -96,7 +100,7 @@ static int ft_check_all(t_map *map)
 			{
 				coin.x = len;
 				coin.y = size;
-				if (ft_check_behind(map->map, coin, '+') == 0)
+				if (ft_check_behind(map->sol, coin, '+') == 0)
 					return (0);
 			}
 			len++;
@@ -108,8 +112,8 @@ static int ft_check_all(t_map *map)
 
 int	ft_check_map_sol(t_map *map)
 {
-	if (ft_check_stat(map))
-		return (0);
+	while (ft_check_stat(map))
+		map = ft_rand_map(map, rand());
 	if (!map->sol)
 		map->sol = ft_create_arr(map->size, map->len);
 	if (!map->sol)

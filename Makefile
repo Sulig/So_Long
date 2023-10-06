@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/04 19:26:26 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/06 20:05:58 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ clean:
 	@make clean -C $(LIBFT)
 	@make clean -C $(DIR)
 
-dsrm:
+dsrm: clean
 	@/bin/rm -f .DS_Store
 	@/bin/rm -f ./maps/DS_Store
 	@/bin/rm -f ./sprites/DS_Store
