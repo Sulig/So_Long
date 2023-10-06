@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:31:40 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 14:05:03 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:34:50 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static t_map	*ft_close_map(t_map *map)
 	size_t	len;
 
 	size = 0;
-	while (size <= map->size)
+	while (size < map->size)
 	{
 		len = 0;
-		while (len <= map->len)
+		while (len < map->len)
 		{
-			if (size == 0 || size == map->size)
+			if (size == 0 || size == map->size - 1)
 				map->map[size][len] = '1';
-			else if (len == 0 || len == map->len)
+			else if (len == 0 || len == map->len - 1)
 				map->map[size][len] = '1';
 			else
 				map->map[size][len] = '0';
@@ -44,10 +44,10 @@ static t_map	*ft_rand_map(t_map *map, size_t seed)
 
 	size = 1;
 	srand(seed);
-	while (size < map->size)
+	while (size < map->size - 1)
 	{
 		len = 1;
-		while (len < map->len)
+		while (len < map->len - 1)
 		{
 			random = (rand() % 7);
 			if (random == 2)

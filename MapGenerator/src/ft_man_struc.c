@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 14:06:19 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:08:44 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	ft_fill_sol(t_map *map)
 	size_t	size;
 
 	size = 0;
-	while (size <= map->size)
+	while (map->map[size])
 	{
 		len = 0;
-		while (len <= map->len)
+		while (map->map[size][len])
 		{
 			map->sol[size][len] = map->map[size][len];
 			if (map->map[size][len] != '1')
@@ -64,7 +64,7 @@ char	**ft_create_arr(size_t max_size, size_t max_len)
 	arr = ft_calloc(max_size + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
-	while (size <= max_size)
+	while (size < max_size)
 	{
 		arr[size] = ft_calloc(max_len + 1, sizeof(char));
 		if (!arr[size])

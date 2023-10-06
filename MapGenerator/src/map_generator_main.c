@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:53:25 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 14:11:05 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:09:17 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static int	ft_write_in_file(char *file, t_map *map)
 	if (fd == -1)
 		return (0);
 	size = 0;
-	while (size <= map->size)
+	while (map->map[size])
 	{
 		len = 0;
-		while (len <= map->len)
+		while (map->map[size][len])
 		{
 			check = write(fd, &map->map[size][len], 1);
 			if (check == -1)
@@ -66,8 +66,9 @@ t_map	*regenerate_map(char *file, t_map *map, size_t seed)
 		map = ft_new_map(map, seed);
 	if (map)
 		map = ft_gen_map(map, seed);
-	if (map->map)
-		ok = ft_write_in_file(file, map);
+	if (map)
+		if (map->map)
+			ok = ft_write_in_file(file, map);
 	if (ok)
 	{
 		ft_printf("\033[1;32mThe map has been regenerated successfully!\n");
@@ -93,13 +94,13 @@ t_map	*gen_new_map(size_t num, t_map *map, size_t seed)
 	name = "Generated_Map_";
 	name = ft_strjoin(name, ft_itoa_unsig(num, "0123456789"));
 	name = ft_strjoin(name, ".ber");
-	if (!map)
-		map = ft_new_map(map, seed);
+	map = ft_new_map(map, seed);
 	if (map)
 		map = ft_gen_map(map, seed);
-	if (map->map)
-		if (ft_gen_file(name))
-			ok = ft_write_in_file(name, map);
+	if (map)
+		if (map->map)
+			if (ft_gen_file(name))
+				ok = ft_write_in_file(name, map);
 	if (ok)
 	{
 		ft_printf("\033[1;32mThe map has been generated successfully!\n");
@@ -126,13 +127,9 @@ int	main(int argc, char **args)
 	if (num == 0)
 		num++;
 	cnt = 0;
-	while (cnt < num)
-	{
-		seed = (1 + rand() % 500);
-		srand(seed);
-		map = gen_new_map(cnt, map, seed);
-		map = ft_free_map(map);
-		cnt++;
-	}
+	seed = (1 + rand() % 500);
+	srand(seed);
+	map = gen_new_map(cnt, map, seed);
+	//ft_printf("Hello?\n");
 	return (0);
 }

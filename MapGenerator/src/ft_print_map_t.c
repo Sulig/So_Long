@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:59:29 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 11:58:28 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:08:18 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ void	ft_print_stat(t_map *map)
 	{
 		ft_printf("\nPreview of map:\n\n");
 		ft_print_map_t(map->map);
-	}
-	if (map->sol)
-	{
-		ft_printf("\nPreview of sol:\n\n");
-		ft_print_map_t(map->sol);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:05:18 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 13:58:23 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:30:03 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int	ft_check_stat(t_map *map)
 
 static void ft_find_path(char **map, t_lctn exit, size_t x, size_t y)
 {
+	if (y < 0 || x < 0 || !map[y])
+		return ;
 	if (x == exit.x && y == exit.y)
 		return ;
 	if (map[y][x] != '0')
@@ -68,8 +70,9 @@ int ft_check_behind(char **map, t_lctn check, char cmp)
 		return (1);
 	if (map[check.y][check.x - 1] == cmp)
 		return (1);
-	if (map[check.y + 1][check.x] == cmp)
-		return (1);
+	if (map[check.y + 1])
+		if (map[check.y + 1][check.x] == cmp)
+			return (1);
 	if (map[check.y - 1][check.x] == cmp)
 		return (1);
 	return (0);
