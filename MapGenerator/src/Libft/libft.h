@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:27:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 13:41:33 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:46:53 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strcut(char *str, char cut, char mode, char inc);
 char	*ft_strdup(const char *s1);
 char	*ft_strcpyl(const char *s1, size_t len);
+char	*ft_strinter(const char *str, const char *inter, size_t pos);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_substr(const char*s, unsigned int start, size_t len);

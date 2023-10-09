@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:53:49 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 20:35:38 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:23:00 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ int	ft_check_format(char *file)
 	ok = 1;
 	if (!format)
 	{
-		color('r');
-		ft_printf("Error\nInvalid Extension\n");
+		ft_printf("\033[1;31mError\nInvalid Extension\n");
 		color('y');
 		ft_printf("Please introduce one file .ber");
 		ft_printf(" like this example:\n./so_long map.ber\n");
+		ok = 0;
+	}
+	if (open(file, O_RDONLY) == -1)
+	{
+		ft_printf("\033[1;31mError\nThis file don't exist!\n");
 		ok = 0;
 	}
 	format = NULL;

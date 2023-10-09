@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:27:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 17:34:01 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:19:32 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_list
 }					t_list;
 
 void	ft_bzero(void *s, size_t n);
+void	*ft_free_arr(size_t size, char **words);
 void	*ft_calloc(size_t count, size_t size);
 
 int		ft_putchar(char ch);
@@ -57,7 +58,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strcut(char *str, char cut, char mode, char inc);
 char	*ft_strdup(const char *s1);
 char	*ft_strcpyl(const char *s1, size_t len);
-char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strinter(const char *str, const char *inter, size_t pos);
+char	*ft_strjoin(char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_substr(const char*s, unsigned int start, size_t len);
 char	**ft_split(const char *s, char c);

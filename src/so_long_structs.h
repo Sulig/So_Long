@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/03 20:20:39 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:51:45 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef	struct	s_lcn
 {
-	size_t		x_pos;
-	size_t		y_pos;
+	size_t		x;
+	size_t		y;
 }				t_lcn;
 
 typedef struct	s_map

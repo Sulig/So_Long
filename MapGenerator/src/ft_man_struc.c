@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 20:11:31 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:36:01 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ void	ft_fill_sol(t_map *map)
 		}
 		size++;
 	}
+}
+
+void	*ft_free_map(t_map *map)
+{
+	if (map->map)
+		map->map = ft_free_arr(map->size, map->map);
+	if (map->sol)
+		map->sol = ft_free_arr(map->size, map->sol);
+	ft_init(map);
+	free(map);
+	return (NULL);
 }
 
 char	**ft_create_arr(size_t max_size, size_t max_len)

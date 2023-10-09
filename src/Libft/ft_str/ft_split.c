@@ -6,17 +6,18 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:30:58 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/27 17:26:24 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:52:49 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static void	*ft_free(size_t size, char **words)
+void	*ft_free_arr(size_t size, char **words)
 {
 	while (size--)
 		free(words[size]);
 	free(words);
+	words = NULL;
 	return (NULL);
 }
 
@@ -73,6 +74,6 @@ char	**ft_split(const char *s, char c)
 	if (!s || !words)
 		return (NULL);
 	if (ft_sep(s, c, words) == 0)
-		return (ft_free(ft_words(s, c), words));
+		return (ft_free_arr(ft_words(s, c), words));
 	return (words);
 }

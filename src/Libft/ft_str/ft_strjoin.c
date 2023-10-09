@@ -6,13 +6,17 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 19:11:30 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/29 16:31:11 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:19:56 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+/*
+ * Join the s2 after the s1, and return new string of joined
+ * Free the s1 before returning the join
+*/
+char	*ft_strjoin(char *s1, const char *s2)
 {
 	int		len;
 	int		cnt;
@@ -31,5 +35,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		while (s2[cnt])
 			join[len++] = s2[cnt++];
 	join[len] = '\0';
+	free(s1);
+	s1 = NULL;
 	return (join);
 }

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:13:15 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 18:32:17 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:56:55 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	ft_locate(t_map *map)
 		{
 			if (map->map[size][len] == 'P')
 			{
-				map->start.x_pos = len;
-				map->start.y_pos = size;
+				map->start.x = len;
+				map->start.y = size;
 			}
 			if (map->map[size][len] == 'E')
 			{
-				map->exit.x_pos = len;
-				map->exit.y_pos = size;
+				map->exit.x = len;
+				map->exit.y = size;
 			}
 			len++;
 		}
@@ -43,7 +43,7 @@ static void	ft_path(char **fill, t_lcn size, size_t y, size_t x)
 {
 	if (y < 0 || x < 0)
 		return ;
-	if (y == size.y_pos && x == size.x_pos)
+	if (y == size.y && x == size.x)
 	{
 		if (fill[y][x])
 			fill[y][x] = '+';
@@ -61,13 +61,13 @@ static void	ft_path(char **fill, t_lcn size, size_t y, size_t x)
 
 static	int	ft_check_behind(char **map, t_lcn checkpoint)
 {
-	if (map[checkpoint.y_pos][checkpoint.x_pos + 1] == '+')
+	if (map[checkpoint.y][checkpoint.x + 1] == '+')
 		return (1);
-	if (map[checkpoint.y_pos][checkpoint.x_pos - 1] == '+')
+	if (map[checkpoint.y][checkpoint.x - 1] == '+')
 		return (1);
-	if (map[checkpoint.y_pos + 1][checkpoint.x_pos] == '+')
+	if (map[checkpoint.y + 1][checkpoint.x] == '+')
 		return (1);
-	if (map[checkpoint.y_pos - 1][checkpoint.x_pos] == '+')
+	if (map[checkpoint.y - 1][checkpoint.x] == '+')
 		return (1);
 	return (0);
 }
@@ -79,7 +79,7 @@ int	ft_check_for_sol(t_map *map)
 	size_t	len;
 	t_lcn	coin;
 
-	ft_path(map->sol, map->exit, map->start.y_pos, map->start.x_pos);
+	ft_path(map->sol, map->exit, map->start.y, map->start.x);
 	ok = ft_check_behind(map->sol, map->exit);
 	size = 0;
 	while (map->map[size] && ok == 1)
@@ -89,8 +89,8 @@ int	ft_check_for_sol(t_map *map)
 		{
 			if (map->map[size][len] == 'C')
 			{
-				coin.x_pos = len;
-				coin.y_pos = size;
+				coin.x = len;
+				coin.y = size;
 				ok = ft_check_behind(map->sol, coin);
 			}
 			len++;

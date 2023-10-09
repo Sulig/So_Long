@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:46:14 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/04 18:28:11 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:50:30 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_check_closed(t_map *map);
 
 int		ft_check_map_sol(t_map *map);
 
+void	*ft_free_map(t_map *map);
 t_map	*ft_new_map(t_map *map);
 t_map	*ft_fill_map(int fd, t_map *map);
 

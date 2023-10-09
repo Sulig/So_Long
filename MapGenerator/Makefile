@@ -6,12 +6,12 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/06 20:08:47 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/09 16:38:37 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = map_gen
-MAPNUM = 0
+MAPNUM = 1
 CFLAGS = -Wall -Wextra -Werror -g
 # ------------------ #
 # Directories:

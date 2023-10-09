@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 20:31:50 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:06:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	ft_check_map(char *file, t_map *map)
 
 	ok = 0;
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (ok);
 	map = ft_fill_map(fd, map);
 	if (map->map)
 	{
@@ -56,29 +54,10 @@ int	main(int argc, char **args)
 			if (map)
 			{
 				if (ft_check_map(args[1], map))
-					ft_printf("\033[1;32mOk\n");
+					ft_printf("\033[1;32mOk\033[1;35m\n");
+				map = ft_free_map(map);
 			}
 		}
 	}
 	exit(0);
-}
-
-void	color(char color)
-{
-	if (color == 'R' || color == 'r')
-		ft_printf("\033[1;31m");
-	else if (color == 'G' || color == 'g')
-		ft_printf("\033[1;32m");
-	else if (color == 'Y' || color == 'y')
-		ft_printf("\033[1;33m");
-	else if (color == 'B' || color == 'b')
-		ft_printf("\033[1;34m");
-	else if (color == 'M' || color == 'm')
-		ft_printf("\033[1;35m");
-	else if (color == 'C' || color == 'c')
-		ft_printf("\033[1;36m");
-	else if (color == 'W' || color == 'w')
-		ft_printf("\033[1;37m");
-	else
-		ft_printf("\033[1;39m");
 }
