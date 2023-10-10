@@ -6,71 +6,84 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/09 16:57:42 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/10 20:23:33 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror -g
+MAP = ./maps/cross_map.ber
+# ------------------ #
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g -I mlx 
+FML = -framework OpenGL -framework AppKit
 # ------------------ #
 # Directories:
 DIR = ./src
 DIRD = ./src/
 
-LIBFT = ./src/Libft
-LIBFTD = ./src/Libft/
+LIBFT = ./Libft
+LIBFTD = ./Libft/
 
-MLBX = ./src/MinilibX
-MLBXD = ./src/MinilibX/
+MLX = ./mlx
+MLXD = ./mlx/
 # ------------------- #
 # Sorces:
 MAK = Makefile
 
-AR = $(DIRD)arch.a
 ARL = $(LIBFTD)libft.a
-ARML = $(MLBXD)libmlx.a
+ARML = $(MLXD)libmlx.a
 
-MAP = ./maps/cross_map.ber
+LIB = so_long.h so_long_structs.h
+SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc colors\
+	  ft_grafics
+
+OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
+# ******************************************************************************* #
 #-------------------------------------------------------------#
-all: $(MAK)
-	@make norm
+all:
+	@make -s norm
+	@echo "\033[0;37m\n~ **************************************** ~\n"
 	@make $(NAME)
-	@make run
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@make -s run
 
 #-------------------------------------------------------------#
 norm:
-	@make norm -C $(DIR)
-	@make norm -C $(LIBFT)
-	@echo "\033[1;32m ~ Norminette OK"
-	@echo "\033[0;39m\n"
+	@make -s norm -C $(LIBFT)
+	@echo "\n\033[1;93m~ Norminette:"
+	@norminette $(DIR)
+	@norminette -R CheckForbiddenSourceHeader $(DIR)
+	@echo "\033[1;32m\n ~ Norminette:\t~ OK"
 
 #-------------------------------------------------------------#
 run: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
+	@echo "\033[1;34m Running ./$(NAME) $(MAP)"
+	@echo "\n~ **************************************** ~\n"
 	@./$(NAME) $(MAP)
 
 #-------------------------------------------------------------#
 
 # ******************************************************************************* #
 # Compiling Region:
-$(ARL):
-	@echo "\033[1;93m * Compiling Libft -->\033[1;97m\n"
-	@make all -C $(LIBFT)
 
 $(ARML):
 	@echo "\033[1;93m * Compiling MiniLibX -->\033[1;97m\n"
-	@make all -C $(MLBX)
+	@make -s -C $(MLX)
 
-$(AR):
-	@echo "\033[1;93m * Compiling SRC -->\033[1;97m\n"
-	@make all -C $(DIR)
+$(ARL):
+	@echo "\033[1;93m * Compiling Libft -->\033[1;97m\n"
+	@make -s -C $(LIBFT)
 
-$(NAME): $(MAK) $(ARL) $(AR)
+$(DIRD)%.o : $(DIR)/%.c ./src/$(LIB)
+	$(CC) $(CFLAGS) -c $<
+	@echo "\033[1;32m SRC Compiled Successfully\033[1;97m\n"
+
+$(NAME): $(ARML) $(ARL) $(OBJ)
+	@echo "\033[1;37m\n~ **************************************** ~\n"
 	@echo "\033[1;93m * Making so_long -->\033[1;97m\n"
-	@gcc -o $(NAME) $(ARL) $(AR)
+	@$(CC) $(ARML) $(ARL) $(OBJ) $(FML) -L mlx -l mlx -o $(NAME)
 	@echo "\033[1;35m So_Long is ready!\033[1;97m\n"
 #-------------------------------------------------------------#
-
 
 # ******************************************************************************* #
 # Debuging region:
@@ -78,33 +91,29 @@ debug: $(NAME)
 	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
 	@lldb $(NAME) $(MAP)
 
-leaks: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)"
-	@echo "\033[1;35m\n"
-	@leaks -atExit -- ./$(NAME) $(MAP)
-	@echo "\033[0;39m\n"
-	@make fclean
-
-valgrind: $(NAME)
+val: $(NAME)
 	@valgrind ./$(NAME) $(MAP)
 
 # ********************************************************************************* #
 # Clean region
 clean:
-	@make clean -C $(MLBX)
-	@make clean -C $(LIBFT)
-	@make clean -C $(DIR)
+	@make -s clean -C $(MLX)
+	@make -s clean -C $(LIBFT)
+	@/bin/rm -f $(DIRD)*.o
+	@echo "\033[1;34m All obj removed\033[1;97m\n"
 
 dsrm: clean
 	@/bin/rm -f .DS_Store
 	@/bin/rm -f ./maps/DS_Store
 	@/bin/rm -f ./sprites/DS_Store
-	@/bin/rm -f $(DIRD)MinilibX/DS_Store
+	@/bin/rm -f ./$(DIR)/DS_Store
+	@/bin/rm -f $(MLX)/DS_Store
 
-fclean: clean dsrm
-	@make fclean -C $(LIBFT)
-	@make fclean -C $(DIR)
+fclean: dsrm
+	@make -s clean -C $(MLX)
+	@make -s fclean -C $(LIBFT)
 	@/bin/rm -f $(NAME)
+	@/bin/rm -frd so_long.dSYM
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean
@@ -112,5 +121,5 @@ clear: fclean
 
 re: fclean all
 # -------------------- #
-.PHONY: all clean clear fclean debug norm re run valgrind
+.PHONY: all clean clear fclean debug norm re run val
 # ********************************************************************************** #

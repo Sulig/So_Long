@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:46:14 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 16:50:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:29:46 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
-# include "./Libft/libft.h"
+# include "../Libft/libft.h"
+# include "../mlx/mlx.h"
 # include "./so_long_structs.h"
 
 void	color(char color);
@@ -24,8 +25,9 @@ int		ft_check_size(t_map *map);
 int		ft_check_sym(t_map *map);
 int		ft_check_minstat(t_map *map);
 int		ft_check_closed(t_map *map);
-
 int		ft_check_map_sol(t_map *map);
+
+void	ft_window(t_map *map);
 
 void	*ft_free_map(t_map *map);
 t_map	*ft_new_map(t_map *map);

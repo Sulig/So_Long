@@ -48,7 +48,7 @@ norm:
 	@echo "\n\033[1;93m~ Norminette:"
 	@norminette $(SRC)
 	@norminette -R CheckForbiddenSourceHeader $(SRC)
-	@echo "\033[1;32m ~ OK\n"
+	@echo "\033[1;32m \nLibft norminette:\t~ OK\n"
 #-------------------------------------------------------------#
 clean:
 	@/bin/rm -f *.o

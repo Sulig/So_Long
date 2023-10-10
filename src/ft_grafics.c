@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_structs.h                                  :+:      :+:    :+:   */
+/*   ft_grafics.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/10 17:07:28 by sadoming         ###   ########.fr       */
+/*   Created: 2023/10/09 17:29:07 by sadoming          #+#    #+#             */
+/*   Updated: 2023/10/10 20:37:49 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCTS_H
-# define SO_LONG_STRUCTS_H
+#include "so_long.h"
 
-# include "so_long.h"
-
-typedef struct s_lcn
+void	ft_window(t_map *map)
 {
-	size_t		x;
-	size_t		y;
-}				t_lcn;
+	void	*mlx;
+	void	*mlx_win;
 
-typedef struct s_map
-{
-	char		**map;
-	char		**sol;
-	size_t		len;
-	size_t		size;
-	size_t		coins;
-	size_t		exits;
-	size_t		players;
-	t_lcn		start;
-	t_lcn		exit;
-	t_lcn		act;
-}				t_map;
-
-#endif
+	map->size *= 25;
+	map->len *= 25;
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, map->len, map->size, "The dungeons");
+	mlx_loop(mlx);
+}
