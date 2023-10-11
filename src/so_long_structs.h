@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/10 17:07:28 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:08:47 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ typedef struct s_lcn
 	size_t		x;
 	size_t		y;
 }				t_lcn;
+
+typedef struct s_data
+{
+	void	*wimg;
+	char	*addr;
+	int		btpx;
+	int		len;
+	int		end;
+}				t_data;
 
 typedef struct s_map
 {
