@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 16:36:01 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:35:03 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ t_map	*ft_new_map(t_map *map, size_t seed)
 	map->map = NULL;
 	map->sol = NULL;
 	srand(seed);
-	map->size = (3 + rand() % 100);
-	map->len = (5 + rand() % 100);
+	map->size = (3 + rand() % 14);
+	map->len = (5 + rand() % 25);
 	ft_init(map);
 	return (map);
 }

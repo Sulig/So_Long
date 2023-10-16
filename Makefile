@@ -6,12 +6,12 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/11 19:59:51 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/16 20:34:49 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-MAP = ./maps/cross_map.ber
+MAP = ./maps/min_max_size_map.ber
 # ------------------ #
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -I mlx 
@@ -35,7 +35,7 @@ ARML = $(MLXD)libmlx.a
 
 LIB = so_long.h so_long_structs.h
 SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc colors\
-	  ft_grafics
+	  ft_grafics ft_exit
 
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 # ******************************************************************************* #
@@ -43,7 +43,7 @@ OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 all:
 	@make -s norm
 	@echo "\033[0;37m\n~ **************************************** ~\n"
-	@make $(NAME)
+	@make -s $(NAME)
 	@make -s run
 
 #-------------------------------------------------------------#
@@ -82,16 +82,23 @@ $(NAME): $(ARML) $(ARL) $(OBJ)
 	@echo "\033[1;37m\n~ **************************************** ~\n"
 	@echo "\033[1;93m * Making so_long -->\033[1;97m\n"
 	@$(CC) $(ARML) $(ARL) $(OBJ) $(FML) -L mlx -l mlx -o $(NAME)
-	@echo "\033[1;35m So_Long is ready!\033[1;97m\n"
+	@echo "\033[1;35m\n~ **************************************** ~\n"
+	@echo " ~\t     So_Long is ready!\t\t ~\n"
+	@echo "~ **************************************** ~\n"
 #-------------------------------------------------------------#
 
 # ******************************************************************************* #
 # Debuging region:
 debug: $(NAME)
-	@echo "\033[1;34m Running ./$(NAME) $(MAP)\n"
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(NAME) $(MAP)"
+	@echo "\n~ **************************************** ~\n"
 	@lldb $(NAME) $(MAP)
 
 val: $(NAME)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(NAME) $(MAP)"
+	@echo "\n~ **************************************** ~\n"
 	@valgrind ./$(NAME) $(MAP)
 
 # ********************************************************************************* #

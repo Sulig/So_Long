@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/11 18:10:56 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:30:08 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ int	main(int argc, char **args)
 		color('y');
 		ft_printf("Please introduce ONE file .ber");
 		ft_printf(" like this example:\n./so_long map.ber\n");
+		exit(0);
 	}
-	else
+	if (ft_check_format(args[1]))
 	{
-		if (ft_check_format(args[1]))
+		map = ft_new_map(map);
+		if (map)
 		{
-			map = ft_new_map(map);
-			if (map)
+			if (ft_check_map(args[1], map))
 			{
-				if (ft_check_map(args[1], map))
-					ft_window(map);
-				map = ft_free_map(map);
+				ft_start(map);
 			}
+			map = ft_free_map(map);
 		}
 	}
 	exit(0);

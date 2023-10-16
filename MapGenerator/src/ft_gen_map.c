@@ -106,7 +106,7 @@ static t_map	*ft_check_all(t_map *map)
 			{
 				coin.x = len;
 				coin.y = size;
-				while (ft_check_behind(map->map, coin, '0') == 0)
+				while (ft_check_map_sol(map) == 0)
 					map = ft_open_way(map, coin);
 			}
 			len++;
