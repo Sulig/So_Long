@@ -5,9 +5,7 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 !! WORK IN PROGRESS !!
 
 ## Contenido del repositorio:
-- Libft
-- FT_Printf
-- GetNextLine
+- Libft + ft_printf + GetNextLine
 - So_long code *(En progresso)*
 - MinilibX *Para Debian*
 - Mapas
@@ -17,6 +15,10 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 
 ***
 ## Comandos:
+### Ejecutar:
+
+    make run
+
 ### Debuggeador:
 
     make debug
