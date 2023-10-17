@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:29:07 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/17 12:57:36 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:40:41 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,11 @@ static t_objs	ft_init_objs(t_data data)
 	obj.cl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Exit_v0.xpm";
 	obj.ex = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Exit/Exit_v0.xpm";
+	obj.ep = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Exit/Exit_v0.xpm";
+	obj.wn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	return (obj);
-}
-
-static char	**ft_clone_map(t_map *map, char **clone)
-{
-	char	*join;
-	size_t	size;
-
-	size = 0;
-	join = NULL;
-	clone = NULL;
-	while (size < map->size)
-	{
-		join = ft_strjoin(join, map->map[size]);
-		join = ft_strjoin(join, "\n");
-		size++;
-	}
-	clone = ft_split(join, '\n');
-	if (!clone)
-		return (NULL);
-	free(join);
-	return (clone);
 }
 
 void	ft_paint_map(t_data data, t_objs obj, char **map)
@@ -101,13 +84,14 @@ void	ft_start(t_map *map)
 
 	data = ft_new_window(map);
 	objs = ft_init_objs(data);
-	player.act_map = ft_clone_map(map, player.act_map);
-	ft_paint_map(data, objs, player.act_map);
+	player.map = map;
+	ft_paint_map(data, objs, player.map->map);
 	player.act.x = map->start.x;
 	player.act.y = map->start.y;
-	player.recol = 0;
+	player.rem = map->coins;
 	player.steps = 0;
-	mlx_key_hook(data.mlx_win, ft_man_events, &data);
-	mlx_hook(data.mlx_win, 17, 0, ft_exit, &data);
-	mlx_loop(data.mlx);
+	player.win = 0;
+	player.data = data;
+	player.objs = objs;
+	ft_update(player);
 }

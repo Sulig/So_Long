@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/17 12:30:02 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:40:38 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define UP 126
 # define DOWN 125
 # define LEFT 123
-# define RIGTH 124
+# define RIGHT 124
 
 typedef struct s_lcn
 {
@@ -66,13 +66,18 @@ typedef struct s_objs
 	void		*pl;
 	void		*cl;
 	void		*ex;
+	void		*ep;
+	void		*wn;
 }				t_objs;
 
 typedef struct s_player
 {
-	char		**act_map;
+	t_data		data;
+	t_objs		objs;
+	t_map		*map;
 	t_lcn		act;
-	size_t		recol;
+	size_t		rem;
 	size_t		steps;
+	int			win;
 }				t_player;
 #endif
