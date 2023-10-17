@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:46:14 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/16 18:17:21 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:30:37 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int		ft_check_map_sol(t_map *map);
 
 void	ft_paint_map(t_data data, t_objs objs, char **map);
 void	ft_start(t_map *map);
+
+int		ft_man_events(int keycode, t_data data);
+int		ft_print_key(int keycode);
+int		ft_exit(void);
 
 void	*ft_free_map(t_map *map);
 t_map	*ft_new_map(t_map *map);

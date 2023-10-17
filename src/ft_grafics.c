@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:29:07 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/16 20:18:37 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:57:36 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ void	ft_start(t_map *map)
 	player.act.y = map->start.y;
 	player.recol = 0;
 	player.steps = 0;
+	mlx_key_hook(data.mlx_win, ft_man_events, &data);
+	mlx_hook(data.mlx_win, 17, 0, ft_exit, &data);
 	mlx_loop(data.mlx);
 }
