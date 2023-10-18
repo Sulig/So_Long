@@ -6,30 +6,38 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:24:22 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/17 20:40:32 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:12:30 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_wingame(t_player *player, size_t x, size_t y)
+void	ft_wingame(t_player *player, size_t x, size_t y)
 {
+	char	*ms;
+
+	ms = "Well done!";
+	player->map->map[y][x] = 'S';
 	if (player->rem == 0)
+	{
 		player->win = 1;
+		player->map->map[y][x] = 'W';
+	}
+	player->steps++;
+	player->map->map[player->act.y][player->act.x] = '0';
+	player->act.x = x;
+	player->act.y = y;
+	ft_paint_actmap(player->data, player->objs, player->map->map);
+	ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
 	if (player->win)
 	{
-		player->map->map[player->act.y][player->act.x] = '0';
-		player->map->map[y][x] = 'P';
-		player->steps++;
-		ft_paint_map(player->data, player->objs, player->map->map);
-		ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
+		mlx_string_put(player->data.mlx, player->data.mlx_win, x, y, 1, ms);
 		ft_printf("\033[1;32m\n~ **************************************** ~\n");
 		ft_printf("\n ~\t\t Well done!\t\t ~\n");
 		ft_printf(" ~ \t You scaped from the dungeon!\t ~\n");
 		ft_printf("\n~ **************************************** ~\n\n");
 		ft_printf("\033[1;33mClose the game with ESC or close the window\n\n");
 	}
-	return (player->win);
 }
 
 void	ft_move(t_player *player, size_t x, size_t y)
@@ -44,15 +52,13 @@ void	ft_move(t_player *player, size_t x, size_t y)
 		if (player->act.y == player->map->exit.y)
 			if (player->act.x == player->map->exit.x)
 				player->map->map[player->act.y][player->act.x] = 'E';
-		player->map->map[y][x] = 'P';
-		ft_paint_map(player->data, player->objs, player->map->map);
 		player->steps++;
-		ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
 		player->act.x = x;
 		player->act.y = y;
-	}
-	else
+		player->map->map[y][x] = 'P';
+		ft_paint_actmap(player->data, player->objs, player->map->map);
 		ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
+	}
 }
 
 int	ft_on_keydown(int keycode, t_player *player)

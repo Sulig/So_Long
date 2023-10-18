@@ -34,12 +34,12 @@ ARML = $(MLBXD)libmlx.a
 all: $(MAK) 
 	@make -s $(NAME)
 	@make -s gen
-	@make -s move
 
 #-------------------------------------------------------------#
 gen: $(NAME)
 	@echo "\033[1;34m~ Generating map...\n"
 	@./$(NAME) $(MAPNUM)
+	@make -s move
 
 #-------------------------------------------------------------#
 move:

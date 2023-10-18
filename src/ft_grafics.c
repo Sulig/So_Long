@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:29:07 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/17 20:40:41 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:01:52 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static t_objs	ft_init_objs(t_data data)
 	obj.cl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Exit_v0.xpm";
 	obj.ex = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Exit/Exit_v0.xpm";
+	path = "./sprites/xpm/Exit/PlayerinExit_v0.xpm";
 	obj.ep = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Exit_v0.xpm";
 	obj.wn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	return (obj);
 }
 
-void	ft_paint_map(t_data data, t_objs obj, char **map)
+static void	ft_paint_map(t_data data, t_objs obj, char **map)
 {
 	size_t	x;
 	size_t	y;
@@ -70,6 +70,33 @@ void	ft_paint_map(t_data data, t_objs obj, char **map)
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.cl, x, y);
 			if (map[y / 100][x / 100] == 'E')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ex, x, y);
+			x += obj.img_x;
+		}
+		y += obj.img_y;
+	}
+}
+
+void	ft_paint_actmap(t_data data, t_objs obj, char **map)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (y < data.size)
+	{
+		x = 0;
+		while (x < data.len)
+		{
+			if (map[y / 100][x / 100] == 'S')
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ep, x, y);
+			if (map[y / 100][x / 100] == '0')
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.fl, x, y);
+			if (map[y / 100][x / 100] == 'P')
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.pl, x, y);
+			if (map[y / 100][x / 100] == 'E')
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ex, x, y);
+			if (map[y / 100][x / 100] == 'W')
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wn, x, y);
 			x += obj.img_x;
 		}
 		y += obj.img_y;

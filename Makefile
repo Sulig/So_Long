@@ -6,12 +6,12 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/18 14:31:29 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/18 16:42:39 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-MAP = ./maps/min_max_size_map.ber
+MAP = ./maps/min_max_len_map.ber
 # ------------------ #
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -I mlx 
@@ -35,7 +35,7 @@ ARML = $(MLXD)libmlx.a
 
 LIB = so_long.h so_long_structs.h
 SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc colors\
-	  ft_grafics ft_exitgame ft_game
+	  ft_grafics ft_exitgame ft_game 
 
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 # ******************************************************************************* #
