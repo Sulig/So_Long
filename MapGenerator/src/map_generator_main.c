@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:53:25 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 16:37:55 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:25:51 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ static int	ft_write_in_file(char *file, t_map *map)
 	return (1);
 }
 
-/*
- * Generate a Random map
-*/
 t_map	*gen_new_map(size_t num, t_map *map, size_t seed)
 {
 	char	*str;
@@ -84,12 +81,39 @@ t_map	*gen_new_map(size_t num, t_map *map, size_t seed)
 	return (map);
 }
 
+size_t	ft_range(size_t seed)
+{
+	size_t	cnt;
+	size_t	com[25] = {6, 13, 19, 26, 39, 41, 45, 76, 86, 91, 104, 110, 117, 123, 130, 143};
+	com[16] = 154;
+	com[17] = 156;
+	com[18] = 162;
+	com[19] = 169;
+	com[20] = 181;
+	com[21] = 188;
+	com[22] = 201;
+	com[23] = 98;
+	com[24] = 182;
+	cnt = 0;
+	while (cnt < 25)
+	{
+		if (seed == com[cnt] || seed > 200)
+		{
+			seed = (rand() % 200);
+			srand(seed);
+			seed = ft_range(seed);
+		}
+		cnt++;
+	}
+	return (seed);
+}
+
 int	main(int argc, char **args)
 {
-	int		num;
-	int		cnt;
-	size_t	seed;
-	t_map	**map;
+	int				num;
+	int				cnt;
+	static size_t	seed;
+	t_map			**map;
 
 	num = 0;
 	map = NULL;
@@ -100,13 +124,14 @@ int	main(int argc, char **args)
 	if (map)
 	{
 		cnt = 0;
-		while (cnt < num - 1)
+		while (cnt < num)
 		{
-			seed = (rand() % rand());
+			seed = (num + rand() % 200);
 			srand(seed);
+			seed = ft_range(seed);
+			ft_printf("Seed: %u\n", seed);
 			map[cnt] = gen_new_map(cnt, map[cnt], seed);
 			cnt++;
-			seed = 0;
 		}
 		cnt--;
 		while (cnt > -1)

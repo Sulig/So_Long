@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:05:18 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/06 19:45:16 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:26:03 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@ static int	ft_check_stat(t_map *map)
 	size_t	len;
 
 	size = 0;
+	map->coins = 0;
 	while (map->map[size])
 	{
 		len = 0;
 		while (map->map[size][len])
 		{
+			if (map->map[size][len] != '1')
+				if (size == map->size - 1 || size == 0)
+					if (len == map->len - 1 || len == 0)
+						return (2);
 			if (map->map[size][len] == 'C')
 				map->coins++;
 			if (map->map[size][len] == 'E')
@@ -39,18 +44,20 @@ static int	ft_check_stat(t_map *map)
 		}
 		size++;
 	}
+	if (size != map->size - 1 || len != map->len - 1)
+		return (2);
 	if (map->players != 1)
-		return (1);
+		return (0);
 	if (map->exits != 1)
-		return (1);
+		return (0);
 	if (map->coins < 1)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 static void ft_find_path(char **map, t_lctn exit, size_t x, size_t y)
 {
-	if (y < 0 || x < 0 || !map[y])
+	if (y <= 0 || x <= 0)
 		return ;
 	if (x == exit.x && y == exit.y)
 	{
@@ -58,10 +65,13 @@ static void ft_find_path(char **map, t_lctn exit, size_t x, size_t y)
 			map[y][x] = '+';
 		return ;
 	}
-	if (map[y][x] != '0')
-		return ;
-	if (map[y][x])
-		map[y][x] = '+';
+	if (map[y])
+	{
+		if (map[y][x] != '0')
+			return ;
+		if (map[y][x])
+			map[y][x] = '+';
+	}
 	ft_find_path(map, exit, x + 1, y);
 	ft_find_path(map, exit, x - 1, y);
 	ft_find_path(map, exit, x, y + 1);
@@ -77,8 +87,9 @@ int ft_check_behind(char **map, t_lctn check, char cmp)
 	if (map[check.y + 1])
 		if (map[check.y + 1][check.x] == cmp)
 			return (1);
-	if (map[check.y - 1][check.x] == cmp)
-		return (1);
+	if (check.y > 0)
+		if (map[check.y - 1][check.x] == cmp)
+			return (1);
 	return (0);
 }
 
@@ -89,7 +100,7 @@ static int ft_check_all(t_map *map)
 	t_lctn	coin;
 
 	size = 0;
-	if (ft_check_behind(map->sol, map->exit, '+') == 0)
+	if (!ft_check_behind(map->sol, map->exit, '+'))
 		return (0);
 	while (map->map[size])
 	{
@@ -100,7 +111,7 @@ static int ft_check_all(t_map *map)
 			{
 				coin.x = len;
 				coin.y = size;
-				if (ft_check_behind(map->sol, coin, '+') == 0)
+				if (!ft_check_behind(map->sol, coin, '+'))
 					return (0);
 			}
 			len++;
@@ -112,7 +123,9 @@ static int ft_check_all(t_map *map)
 
 int	ft_check_map_sol(t_map *map)
 {
-	while (ft_check_stat(map))
+	if (ft_check_stat(map) == 2)
+		map = ft_close_map(map);
+	while (!ft_check_stat(map))
 		map = ft_rand_map(map, rand());
 	if (!map->sol)
 		map->sol = ft_create_arr(map->size, map->len);

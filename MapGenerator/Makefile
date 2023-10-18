@@ -6,15 +6,18 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/09 16:38:37 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/18 14:25:39 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = map_gen
-MAPNUM = 1
+MAPNUM = 21
 CFLAGS = -Wall -Wextra -Werror -g
 # ------------------ #
 # Directories:
+
+MAPDIR = GeneratedMaps #The directory where the *.ber are been saved
+
 DIR = ./src
 DIRD = ./src/
 
@@ -29,25 +32,30 @@ ARL = $(LIBFTD)libft.a
 ARML = $(MLBXD)libmlx.a
 #-------------------------------------------------------------#
 all: $(MAK) 
-	@make $(NAME)
-	@make gen
+	@make -s $(NAME)
+	@make -s gen
+	@make -s move
 
 #-------------------------------------------------------------#
 gen: $(NAME)
-	@echo "\033[1;34m Generating map...\n"
+	@echo "\033[1;34m~ Generating map...\n"
 	@./$(NAME) $(MAPNUM)
 
 #-------------------------------------------------------------#
+move:
+	@mkdir -p $(MAPDIR)
+	@mv *.ber ./$(MAPDIR)
+	@echo "\033[1;34~ The maps are in $(MAPDIR) ~\n"
 
 # ******************************************************************************* #
 # Compiling Region:
 $(ARL):
 	@echo "\033[1;93m * Compiling Libft -->\033[1;97m\n"
-	@make all -C $(LIBFT)
+	@make -s all -C $(LIBFT)
 
 $(AR):
 	@echo "\033[1;93m * Compiling SRC -->\033[1;97m\n"
-	@make all -C $(DIR)
+	@make -s all -C $(DIR)
 
 $(NAME): $(MAK) $(ARL) $(AR)
 	@echo "\033[1;93m * Making Map_Gen -->\033[1;97m\n"
@@ -66,14 +74,17 @@ val: $(NAME)
 # ********************************************************************************* #
 # Clean region
 clean:
-	@make clean -C $(LIBFT)
-	@make clean -C $(DIR)
+	@make -s clean -C $(LIBFT)
+	@make -s clean -C $(DIR)
+	@make -s fclean -C $(LIBFT)
+	@make -s fclean -C $(DIR)
 	@/bin/rm -f .DS_Store
 
 fclean: clean
-	@make fclean -C $(LIBFT)
-	@make fclean -C $(DIR)
+	@make -s fclean -C $(LIBFT)
+	@make -s fclean -C $(DIR)
 	@/bin/rm -f $(NAME)
+	@/bin/rm -f *.ber
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean
