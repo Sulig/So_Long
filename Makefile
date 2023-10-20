@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/18 17:18:28 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/20 12:54:13 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ ARML = $(MLXD)libmlx.a
 
 LIB = so_long.h so_long_structs.h
 SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc colors\
-	  ft_grafics ft_exitgame ft_game 
+	  ft_start ft_paint_map ft_game ft_exitgame
 
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 # ******************************************************************************* #
@@ -117,7 +117,7 @@ dsrm:
 	@/bin/rm -f ./$(DIR)/DS_Store
 	@/bin/rm -f ./$(MLX)/DS_Store
 
-fclean: dsrm
+fclean: clean
 	@make -s clean -C $(MLX)
 	@make -s fclean -C $(LIBFT)
 	@/bin/rm -f $(NAME)

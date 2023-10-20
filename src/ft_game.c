@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:24:22 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/18 17:12:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:58:34 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_wingame(t_player *player, size_t x, size_t y)
 	ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
 	if (player->win)
 	{
-		mlx_string_put(player->data.mlx, player->data.mlx_win, x, y, 1, ms);
 		ft_printf("\033[1;32m\n~ **************************************** ~\n");
 		ft_printf("\n ~\t\t Well done!\t\t ~\n");
 		ft_printf(" ~ \t You scaped from the dungeon!\t ~\n");
