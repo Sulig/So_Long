@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/20 12:54:13 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/23 19:41:59 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,15 +107,9 @@ clean:
 	@make -s clean -C $(MLX)
 	@make -s clean -C $(LIBFT)
 	@/bin/rm -f $(DIRD)*.o
-	@make -s dsrm
+	@find . -name ".DS_Store" -type f -delete
 	@echo "\033[1;34m All obj removed\033[1;97m\n"
 
-dsrm:
-	@/bin/rm -f .DS_Store
-	@/bin/rm -f ./maps/DS_Store
-	@/bin/rm -f ./sprites/DS_Store
-	@/bin/rm -f ./$(DIR)/DS_Store
-	@/bin/rm -f ./$(MLX)/DS_Store
 
 fclean: clean
 	@make -s clean -C $(MLX)
