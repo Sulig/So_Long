@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:50:01 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/23 17:08:39 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:39:47 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	ft_paint_corners(t_data data, t_objs obj)
 	size_t	size;
 	size_t	len;
 
-	size = data.size - 100;
-	len = data.len - 100;
+	size = data.size - obj.img_y;
+	len = data.len - obj.img_x;
 	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ul, 0, 0);
 	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ur, len, 0);
 	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.dl, 0, size);
@@ -98,15 +98,15 @@ void	ft_paint_actmap(t_data data, t_objs obj, char **map)
 		x = 0;
 		while (x < data.len)
 		{
-			if (map[y / 100][x / 100] == 'S')
+			if (map[y / obj.img_y][x / obj.img_x] == 'S')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ep, x, y);
-			if (map[y / 100][x / 100] == '0')
+			if (map[y / obj.img_y][x / obj.img_x] == '0')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.fl, x, y);
-			if (map[y / 100][x / 100] == 'P')
+			if (map[y / obj.img_y][x / obj.img_x] == 'P')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.pl, x, y);
-			if (map[y / 100][x / 100] == 'E')
+			if (map[y / obj.img_y][x / obj.img_x] == 'E')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ex, x, y);
-			if (map[y / 100][x / 100] == 'W')
+			if (map[y / obj.img_y][x / obj.img_x] == 'W')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wn, x, y);
 			x += obj.img_x;
 		}
