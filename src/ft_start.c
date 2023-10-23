@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:03 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/20 13:03:58 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:09:58 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,34 +33,34 @@ static void	ft_start_player(t_player *player)
 	player->steps = 0;
 	player->win = 0;
 }
-/*
+
 static t_objs	ft_init_corners(t_data data, t_objs obj)
 {
 	char	*path;
 
 	path = "./sprites/xpm/Walls/Up_Wall.xpm";
+	obj.wu = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Down_Wall.xpm";
+	obj.wd = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Left_Wall.xpm";
 	obj.wl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Floor/Tile.xpm";
-	obj.fl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Player/Triangle_Pl.xpm";
-	obj.pl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Collect/Key_demo.xpm";
-	obj.cl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Exit/Exit_v0.xpm";
-	obj.ex = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Exit/PlayerinExit_v0.xpm";
-	obj.ep = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Exit/Exit_v0.xpm";
-	obj.wn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Right_Wall.xpm";
+	obj.wr = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Up_Left_Wall.xpm";
+	obj.ul = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Up_Right_Wall.xpm";
+	obj.ur = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Down_Left_Wall.xpm";
+	obj.dl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Walls/Down_Right_Wall.xpm";
+	obj.dr = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	return (obj);
 }
-*/
+
 static t_objs	ft_init_objs(t_data data, t_objs obj)
 {
 	char	*path;
 
-	path = "./sprites/xpm/Walls/Up_Wall.xpm";
-	obj.wu = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Floor/Tile.xpm";
 	obj.fl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Player/Triangle_Pl.xpm";
@@ -85,7 +85,7 @@ void	ft_start(t_map *map)
 	objs.img_x = 100;
 	objs.img_y = 100;
 	data = ft_new_window(map, objs);
-	//objs = ft_init_cornners(data, objs);
+	objs = ft_init_corners(data, objs);
 	objs = ft_init_objs(data, objs);
 	player.map = map;
 	player.data = data;

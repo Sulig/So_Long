@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:50:01 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/20 13:04:05 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:38:07 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static void	ft_paint_map(t_data data, t_objs obj, char **map)
 		x = 0;
 		while (x < data.len)
 		{
-			if (map[y / 100][x / 100] == '1')
+			if (map[y / obj.img_y][x / obj.img_x] == '1')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wu, x, y);
-			if (map[y / 100][x / 100] == '0')
+			if (map[y / obj.img_y][x / obj.img_x] == '0')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.fl, x, y);
-			if (map[y / 100][x / 100] == 'P')
+			if (map[y / obj.img_y][x / obj.img_x] == 'P')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.pl, x, y);
-			if (map[y / 100][x / 100] == 'C')
+			if (map[y / obj.img_y][x / obj.img_x] == 'C')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.cl, x, y);
-			if (map[y / 100][x / 100] == 'E')
+			if (map[y / obj.img_y][x / obj.img_x] == 'E')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ex, x, y);
 			x += obj.img_x;
 		}
@@ -39,9 +39,46 @@ static void	ft_paint_map(t_data data, t_objs obj, char **map)
 	}
 }
 
+static void	ft_paint_corners(t_data data, t_objs obj)
+{
+	size_t	size;
+	size_t	len;
+
+	size = data.size - 100;
+	len = data.len - 100;
+	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ul, 0, 0);
+	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ur, len, 0);
+	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.dl, 0, size);
+	mlx_put_image_to_window(data.mlx, data.mlx_win, obj.dr, len, size);
+}
+
+static void	ft_paint_walls(t_data data, t_objs obj)
+{
+	size_t	y;
+	size_t	x;
+
+	y = obj.img_y;
+	while (y < data.size - obj.img_y)
+	{
+		x = 0;
+		mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wl, x, y);
+		x = data.len - obj.img_x;
+		mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wr, x, y);
+		y += obj.img_y;
+	}
+	x = 0;
+	while (x < data.len)
+	{
+		mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wd, x, y);
+		x += obj.img_x;
+	}
+}
+
 void	ft_style_map(t_player *player)
 {
 	ft_paint_map(player->data, player->objs, player->map->map);
+	ft_paint_walls(player->data, player->objs);
+	ft_paint_corners(player->data, player->objs);
 }
 
 void	ft_paint_actmap(t_data data, t_objs obj, char **map)
