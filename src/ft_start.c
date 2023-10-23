@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:03 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/23 15:09:58 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:06:49 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static t_objs	ft_init_objs(t_data data, t_objs obj)
 {
 	char	*path;
 
+	path = "./sprites/xpm/Walls/Cross_Wall.xpm";
+	obj.cw = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Floor/Tile.xpm";
 	obj.fl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Player/Triangle_Pl.xpm";

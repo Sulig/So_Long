@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/20 13:06:42 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:04:29 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_objs
 {
 	int			img_x;
 	int			img_y;
+	void		*cw;
 	void		*wu;
 	void		*wd;
 	void		*wl;

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:50:01 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/23 15:38:07 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:08:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_paint_map(t_data data, t_objs obj, char **map)
 		while (x < data.len)
 		{
 			if (map[y / obj.img_y][x / obj.img_x] == '1')
-				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wu, x, y);
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.cw, x, y);
 			if (map[y / obj.img_y][x / obj.img_x] == '0')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.fl, x, y);
 			if (map[y / obj.img_y][x / obj.img_x] == 'P')
@@ -57,7 +57,13 @@ static void	ft_paint_walls(t_data data, t_objs obj)
 	size_t	y;
 	size_t	x;
 
-	y = obj.img_y;
+	y = 0;
+	x = 0;
+	while (x < data.len)
+	{
+		mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wu, x, y);
+		x += obj.img_x;
+	}
 	while (y < data.size - obj.img_y)
 	{
 		x = 0;
