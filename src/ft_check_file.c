@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:53:49 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/24 16:24:52 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:23:44 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,24 @@ int	ft_check_size(t_map *map)
 {
 	size_t	act;
 	size_t	cnt;
+	int		ok;
 
 	cnt = 0;
+	ok = 1;
 	map->len = ft_strllen(map->map[0]);
 	while (map->map[cnt])
 	{
+		map->size++;
 		act = ft_strllen(map->map[cnt]);
-		if (act == map->len)
-			map->size++;
-		else
+		if (act != map->len)
 		{
 			color('r');
-			ft_printf("Error\nMap have diferent sizes!\n");
-			return (0);
+			ft_printf("Error\nMap have diferent lenght!\n");
+			ok = 0;
 		}
 		cnt++;
 	}
-	return (1);
+	return (ok);
 }
 
 int	ft_check_sym(t_map *map)
