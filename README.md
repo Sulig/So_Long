@@ -9,7 +9,7 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 - So_long code *(En progresso)*
 - MinilibX *Para Debian*
 - Mapas
-- Tests *(Incluye tests de mapas erroneos y mucho mas en camino)*
+- Tests *(Tests de mapas erroneos)*
 - Map Generator
 - Subject
 
@@ -26,7 +26,7 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 *Valgrind (Solo funcionara si tienes valgrind)*
 
     make valgrind
-
+***
 ### Limpiar archivos innecessarios:
 
 Limpia solo *.o y los .out
