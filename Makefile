@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = so_long
-MAP = ./maps/min_max_len_map.ber
+MAP = ./maps/sadoming_map.ber
 # ------------------ #
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -I mlx 
@@ -40,7 +40,9 @@ SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc colors\
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 # ******************************************************************************* #
 #-------------------------------------------------------------#
-all:
+all: $(NAME)
+#-------------------------------------------------------------#
+trueall:
 	@make -s norm
 	@echo "\033[0;37m\n~ **************************************** ~\n"
 	@make -s $(NAME)
@@ -123,5 +125,5 @@ clear: fclean
 
 re: fclean all
 # -------------------- #
-.PHONY: all clean clear fclean debug norm re run val
+.PHONY: all clean clear fclean debug norm re run val trueall
 # ********************************************************************************** #

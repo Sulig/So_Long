@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 16:19:30 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/27 20:25:18 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:08:23 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TEST_PRINTF_H
 
 # include <stdio.h>
-# include "../../libft.h"
+# include "../../Libft/libft.h"
 
 // Apliccations -->
 void	cc(char color);

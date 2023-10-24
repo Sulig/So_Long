@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:52:18 by sadoming          #+#    #+#             */
-/*   Updated: 2023/09/27 12:32:12 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:07:58 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <xlocale.h>
-# include "../Libft/libft.h"
+# include "../../Libft/libft.h"
 
 /* //Aplications 4 tests: */
 int		test_myapp_str(char *you, char *exp);

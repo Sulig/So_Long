@@ -5,29 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/06 19:55:18 by sadoming          #+#    #+#              #
-#    Updated: 2023/09/27 18:23:46 by sadoming         ###   ########.fr        #
+#    Created: 2023/07/10 16:38:54 by sadoming          #+#    #+#              #
+#    Updated: 2023/08/29 19:04:00 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test_getnextline.a
+NAME = test_printf.a
 # ---------------- #
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 # ---------------- #
+# Sources:
 MAK = Makefile
-LIB = test_getnextline.h
+LIB = test_printf.h
 
-SRC = test_getnextline_main.c test_utils.c
+SRC = test_printf_main.c test_csp_and_noformat.c test_nbr.c test_utils.c
 OBJ = $(SRC:%.c=%.o)
 #------------------------------------------------------------------------------#
 all: $(NAME)
 # ---------------- #
 %.o : %.c $(LIB) $(MAK)
-	@gcc $(CFLAGS) -c $< -o $@
+	@gcc $(CFLAGS) $(PF) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "\033[1;32m GetNextLine Tests Compiled Successfully\033[1;97m\n"
+	@echo "\033[1;32m Printf Tests Compiled Successfully\033[1;97m\n"
 
 clean:
 	@/bin/rm -f *.o
