@@ -35,7 +35,7 @@ ARML = $(MLXD)libmlx.a
 
 LIB = so_long.h so_long_structs.h
 SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc colors\
-	  ft_start ft_paint_map ft_game ft_exitgame
+	  ft_print_map_t ft_start ft_paint_map ft_game ft_exitgame
 
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 # ******************************************************************************* #
