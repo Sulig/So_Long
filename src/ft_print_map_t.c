@@ -6,11 +6,11 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:59:29 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/25 15:57:39 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:24:21 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map_generator.h"
+#include "so_long.h"
 
 static void	ft_print_case(char c)
 {
@@ -53,8 +53,8 @@ void	ft_print_stat(t_map *map)
 	ft_printf("Len of map: %u\n", map->len);
 	ft_printf("Size of map: %u\n\n", map->size);
 	ft_printf("Num of collectables: %u", map->coins);
-	ft_printf("Start are in [%u][%u]\n", map->start.y_pos, map->start.x_pos);
-	ft_printf("Exit are in [%u][%u]\n", map->exit.y_pos, map->exit.x_pos);
+	ft_printf("Start are in [%u][%u]\n", map->start.y, map->start.x);
+	ft_printf("Exit are in [%u][%u]\n", map->exit.y, map->exit.x);
 	ft_printf("\nPreview of map:\n\n");
 	ft_print_map_t(map->map);
 	ft_printf("\nPreview of sol:\n\n");
