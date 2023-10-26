@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:53:49 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/24 20:23:44 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:26:03 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_check_size(t_map *map)
 	{
 		map->size++;
 		act = ft_strllen(map->map[cnt]);
-		if (act != map->len)
+		if (act != map->len && ok)
 		{
 			color('r');
 			ft_printf("Error\nMap have diferent lenght!\n");
