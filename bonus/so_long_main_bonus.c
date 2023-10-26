@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_main.c                                     :+:      :+:    :+:   */
+/*   so_long_main_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/26 19:11:42 by sadoming         ###   ########.fr       */
+/*   Created: 2023/10/26 18:42:03 by sadoming          #+#    #+#             */
+/*   Updated: 2023/10/26 18:45:18 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	ft_check_map(char *file, t_map *map)
 {
@@ -20,15 +20,14 @@ static int	ft_check_map(char *file, t_map *map)
 	ok = 0;
 	fd = open(file, O_RDONLY);
 	map = ft_fill_map(fd, map);
-	if (map)
+	if (map->map)
 	{
-		if (map->map)
-			if (ft_check_size(map))
-				if (ft_check_sym(map))
-					if (ft_check_minstat(map))
-						if (ft_check_closed(map))
-							if (ft_check_map_sol(map))
-								ok = 1;
+		if (ft_check_size(map))
+			if (ft_check_sym(map))
+				if (ft_check_minstat(map))
+					if (ft_check_closed(map))
+						if (ft_check_map_sol(map))
+							ok = 1;
 	}
 	close(fd);
 	return (ok);

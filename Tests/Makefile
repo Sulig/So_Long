@@ -58,6 +58,7 @@ ERMAP18 = $(DMAPS)/two_players.ber
 ERMAP19 = $(DMAPS)/cant_rearch_exit.ber
 ERMAP20 = $(DMAPS)/cant_rearch_anything.ber
 ERMAP21 = $(DMAPS)/cant_rearch_collectable.ber
+ERMAP22 = $(DMAPS)/folder.ber
 # ---------------------------------------------- #
 # ******************************************************************************* #
 #-------------------------------------------------------------#
@@ -133,6 +134,8 @@ test_error_maps:
 	@./$(NAME) $(ERMAP20)
 	@echo "\033[1;34m\n ~ Testing: $(NAME) $(ERMAP21)\n"
 	@./$(NAME) $(ERMAP21)
+	@echo "\033[1;34m\n ~ Testing: $(NAME) $(ERMAP22)\n"
+	@./$(NAME) $(ERMAP22)
 	@echo "\033[1;37m\n~ **************************************** ~\n"
 	@echo "   If all your outputs have the \"Error\"\n"
 	@echo "\033[1;32m   Then your control errors is ok!\n"

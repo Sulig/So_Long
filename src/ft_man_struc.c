@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:43:27 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 17:22:52 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:15:13 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_map	*ft_fill_map(int fd, t_map *map)
 
 	file = NULL;
 	tmp = get_next_line(fd);
+	if (!tmp)
+		ft_printf("\033[1;31mError\nSomething went wrong!\n");
 	while (tmp)
 	{
 		file = ft_strjoin(file, tmp);
@@ -67,7 +69,8 @@ t_map	*ft_fill_map(int fd, t_map *map)
 		tmp = NULL;
 		tmp = get_next_line(fd);
 	}
-	map->map = ft_split(file, '\n');
+	if (file)
+		map->map = ft_split(file, '\n');
 	if (!map->map)
 		return (NULL);
 	map->sol = ft_split(file, '\n');
