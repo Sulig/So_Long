@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:03 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/25 19:33:29 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:08:48 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ static t_objs	ft_init_objs(t_data data, t_objs obj)
 
 	path = "./sprites/xpm/Walls/Cross_Wall.xpm";
 	obj.cw = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Floor/Tile_v2.xpm";
+	path = "./sprites/xpm/Floor/Tile_v3.xpm";
 	obj.fl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Player/Player.xpm";
+	path = "./sprites/xpm/Player/Player_v2.xpm";
 	obj.pl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Collect/Key_v2.xpm";
+	path = "./sprites/xpm/Collect/Key_v3.xpm";
 	obj.cl = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Exit_v2.xpm";
 	obj.ex = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
-	path = "./sprites/xpm/Exit/PlayerinExit_v1.xpm";
+	path = "./sprites/xpm/Exit/PlayerinExit_v2.xpm";
 	obj.ep = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Win_v2.xpm";
 	obj.wn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
