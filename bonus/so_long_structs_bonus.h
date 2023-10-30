@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/26 19:34:23 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:39:15 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,28 @@ typedef struct s_objs
 	void		*wn;
 }				t_objs;
 
+typedef struct s_text
+{
+	int			img_x;
+	int			img_y;
+	void		*tx;
+	void		*nl;
+	void		*ze;
+	void		*on;
+	void		*tw;
+	void		*tr;
+	void		*fo;
+	void		*fi;
+	void		*si;
+	void		*se;
+	void		*ei;
+	void		*ni;
+}				t_text;
+
 typedef struct s_player
 {
 	t_data		data;
+	t_text		text;
 	t_objs		objs;
 	t_map		*map;
 	t_lcn		act;

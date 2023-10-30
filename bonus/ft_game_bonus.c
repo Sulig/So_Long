@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:44:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/30 12:10:01 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:30:31 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_wingame(t_player *player, size_t x, size_t y)
 	player->act.x = x;
 	player->act.y = y;
 	ft_paint_actmap(player->data, player->objs, player->map->map);
-	mlx_string_put(player->data.mlx, player->data.mlx_win, 75, 25, 16777215, "HHHHH");
 	ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
 	if (player->win)
 	{
