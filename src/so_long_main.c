@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:45:10 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/26 19:11:42 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:02:01 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ int	main(int argc, char **args)
 	map = NULL;
 	if (argc != 2)
 	{
-		color('r');
-		ft_printf("Error\nIncorrect number of arguments\n");
-		color('y');
-		ft_printf("Please introduce ONE file .ber");
+		ft_printf("\033[1;31mError\nIncorrect number of arguments\n");
+		ft_printf("\033[1;33mPlease introduce ONE file .ber");
 		ft_printf(" like this example:\n./so_long map.ber\n");
 		exit(0);
 	}

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_file.c                                    :+:      :+:    :+:   */
+/*   ft_check_file_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 17:53:49 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/26 20:05:08 by sadoming         ###   ########.fr       */
+/*   Created: 2023/10/26 19:40:15 by sadoming          #+#    #+#             */
+/*   Updated: 2023/10/26 20:22:45 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	ft_check_format(char *file)
 {
