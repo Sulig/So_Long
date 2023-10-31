@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:49:59 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 13:13:06 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:45:24 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static t_objs	ft_init_objs(t_data data, t_objs obj)
 	obj.ex = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/PlayerinExit_v2.xpm";
 	obj.ep = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Exit/Exit_Open_v2.xpm";
+	obj.op = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Win_v2.xpm";
 	obj.wn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	return (obj);
