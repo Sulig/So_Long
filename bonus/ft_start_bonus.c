@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:49:59 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 13:45:24 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:15:38 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	ft_start(t_map *map)
 	ft_start_player(&player);
 	ft_style_map(&player);
 	player.text = ft_init_text(&player);
+	ft_start_anim(&player);
 	ft_update(player);
 }

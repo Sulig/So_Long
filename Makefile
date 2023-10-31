@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/10/31 13:49:14 by sadoming         ###   ########.fr        #
+#    Updated: 2023/10/31 19:46:11 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc\
 LIBB = so_long_bonus.h so_long_structs_bonus.h
 SRCB = so_long_main_bonus ft_check_file_bonus ft_check_map_sol_bonus ft_man_struc_bonus\
 	  ft_print_map_t_bonus ft_start_bonus ft_paint_map_bonus ft_game_bonus ft_exitgame_bonus\
-	  ft_text_bonus
+	  ft_text_bonus ft_anim_keys_bonus
 
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 OBJB = $(addprefix $(DIRDB), $(addsuffix .o, $(SRCB)))
@@ -134,17 +134,38 @@ debug: $(NAME)
 	@echo "\n~ **************************************** ~\n"
 	@lldb $(NAME) $(MAP)
 
+debug_bonus: $(BONUS)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(BONUS) $(MAP)"
+	@echo "\n~ **************************************** ~\n"
+	@lldb $(BONUS) $(MAP)
+
+# ------------------
 leaks: $(NAME)
 	@echo "\033[1;34m\n~ **************************************** ~\n"
 	@echo " ~ Running ./$(NAME) $(MAP)"
 	@echo "\n~ **************************************** ~\n"
 	@leaks -atExit -- ./$(NAME) $(MAP)
 
+leaks_bonus: $(BONUS)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(BONUS) $(MAP)"
+	@echo "\n~ **************************************** ~\n"
+	@leaks -atExit -- ./$(BONUS) $(MAP)
+
+# ------------------
+
 val: $(NAME)
 	@echo "\033[1;34m\n~ **************************************** ~\n"
 	@echo " ~ Running ./$(NAME) $(MAP)"
 	@echo "\n~ **************************************** ~\n"
 	@valgrind ./$(NAME) $(MAP)
+
+val_bonus: $(BONUS)
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo " ~ Running ./$(BONUS) $(MAP)"
+	@echo "\n~ **************************************** ~\n"
+	@valgrind ./$(BONUS) $(MAP)
 
 # ********************************************************************************* #
 # Clean region
@@ -163,6 +184,7 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(BONUS)
 	@/bin/rm -frd so_long.dSYM
+	@/bin/rm -frd so_long_bonus.dSYM
 	@echo "\033[1;34m All cleaned succesfully\033[1;97m\n"
 
 clear: fclean
@@ -170,5 +192,5 @@ clear: fclean
 
 re: fclean all
 # -------------------- #
-.PHONY: all clean clear fclean debug norm re run val trueall
+.PHONY: all bonus clean clear fclean debug norm re run val trueall
 # ********************************************************************************** #
