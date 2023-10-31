@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:44:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/30 19:30:31 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:07:30 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	ft_wingame(t_player *player, size_t x, size_t y)
 		player->map->map[y][x] = 'W';
 	}
 	player->steps++;
+	ft_act_stat(player);
 	player->map->map[player->act.y][player->act.x] = '0';
 	player->act.x = x;
 	player->act.y = y;
 	ft_paint_actmap(player->data, player->objs, player->map->map);
-	ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
 	if (player->win)
 	{
 		ft_printf("\033[1;32m\n~ **************************************** ~\n");
@@ -56,7 +56,7 @@ void	ft_move(t_player *player, size_t x, size_t y)
 		player->act.y = y;
 		player->map->map[y][x] = 'P';
 		ft_paint_actmap(player->data, player->objs, player->map->map);
-		ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
+	       	ft_act_stat(player);
 	}
 }
 
