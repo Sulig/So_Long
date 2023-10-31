@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 19:38:58 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:35:24 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_player
 {
 	t_data		data;
 	t_anim		anim_key;
+	t_anim		anim_pla;
 	t_text		text;
 	t_objs		objs;
 	t_map		*map;

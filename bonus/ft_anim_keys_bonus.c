@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:45:25 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 19:49:04 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:26:49 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	ft_where_are_keys(t_player *player)
 	}
 }
 
-static int	ft_animate_key(t_player *player)
+void	ft_animate_key(t_player *player)
 {
 	static size_t	pos;
 	static size_t	frame;
@@ -80,10 +80,9 @@ static int	ft_animate_key(t_player *player)
 		pos++;
 	}
 	frame++;
-	return (0);
 }
 
-void	ft_start_anim(t_player *player)
+void	ft_start_anim_keys(t_player *player)
 {
 	t_anim	anim_key;
 
@@ -93,5 +92,4 @@ void	ft_start_anim(t_player *player)
 	anim_key.ac = NULL;
 	anim_key = ft_init_anim_key(player->data, anim_key);
 	player->anim_key = anim_key;
-	mlx_loop_hook(player->data.mlx, ft_animate_key, player);
 }
