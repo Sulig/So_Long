@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:44:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 13:07:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:12:39 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_move(t_player *player, size_t x, size_t y)
 		player->act.y = y;
 		player->map->map[y][x] = 'P';
 		ft_paint_actmap(player->data, player->objs, player->map->map);
-	       	ft_act_stat(player);
+		ft_act_stat(player);
 	}
 }
 
