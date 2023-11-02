@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:45:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 13:05:30 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:00:05 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ void	ft_style_map(t_player *player);
 void	ft_paint_actmap(t_data data, t_objs obj, char **map);
 
 void	ft_start_anims(t_player *player);
+void	ft_start_anim_enemy(t_player *player);
 void	ft_start_anim_keys(t_player *player);
 void	ft_start_anim_player(t_player *player);
 void	ft_anim_player(t_player *player);
 void	ft_animate_key(t_player *player);
+void	ft_animate_bat(t_player *player);
 
 int		ft_on_keydown(int keycode, t_player *player);
 int		ft_print_key(int keycode);

@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 14:11:06 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:52:21 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_text
 typedef struct s_player
 {
 	t_data		data;
+	t_anim		anim_eny;
 	t_anim		anim_key;
 	t_anim		anim_pla;
 	t_text		text;
