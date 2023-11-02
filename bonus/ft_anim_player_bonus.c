@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:56:23 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 20:35:19 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:00:27 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_anim	ft_init_anim_player(t_data dt, t_anim an)
 	{
 		path = "./sprites/xpm/Player/Anim/Player_.xpm";
 		num = ft_unsig_tobase(i, 'd');
-		path = ft_strinter(path, num, 31);
+		path = ft_strinter(path, num, 33);
 		an.sp[i] = mlx_xpm_file_to_image(dt.mlx, path, &an.img_x, &an.img_y);
 		free(path);
 		free(num);
@@ -34,7 +34,7 @@ static t_anim	ft_init_anim_player(t_data dt, t_anim an)
 	}
 	return (an);
 }
-/*
+
 static void	ft_put_win(t_player *player, size_t x, size_t y)
 {
 	t_data	data;
@@ -44,7 +44,31 @@ static void	ft_put_win(t_player *player, size_t x, size_t y)
 	sprite = player->anim_pla.ac;
 	mlx_put_image_to_window(data.mlx, data.mlx_win, sprite, x, y);
 }
-*/
+
+static void	ft_where_is_player(t_player *player)
+{
+	size_t	size;
+	size_t	len;
+	t_lcn	ply;
+
+	size = 0;
+	while (player->map->map[size])
+	{
+		len = 0;
+		while (player->map->map[size][len])
+		{
+			if (player->map->map[size][len] == 'P')
+			{
+				ply.x = len * player->anim_pla.img_x;
+				ply.y = size * player->anim_pla.img_y;
+				ft_put_win(player, ply.x, ply.y);
+			}
+			len++;
+		}
+		size++;
+	}
+}
+
 void	ft_anim_player(t_player *player)
 {
 	static size_t	pos;
@@ -56,16 +80,15 @@ void	ft_anim_player(t_player *player)
 	time = 900;
 	x = player->act.x;
 	y = player->act.y;
-	ft_printf("ft_anim_player\n");
-	if (frame % time == 0)
+	if ((frame % time) == 0)
 	{
 		if (pos > 3)
 			pos = 0;
-		//player->anim_pla.ac = player->anim_pla.sp[pos];
-		//ft_put_win(player, player->act.x, player->act.y);
+		player->anim_pla.ac = player->anim_pla.sp[pos];
+		ft_where_is_player(player);
 		pos++;
 	}
-	time++;
+	frame++;
 }
 
 void	ft_start_anim_player(t_player *player)

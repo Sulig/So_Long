@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:23:28 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 20:35:15 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:55:33 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_animate(t_player *player)
 {
-	//ft_anim_player(player);
+	ft_anim_player(player);
 	ft_animate_key(player);
 	return (0);
 }
