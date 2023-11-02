@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:45:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 20:35:09 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:05:30 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int		ft_check_minstat(t_map *map);
 int		ft_check_closed(t_map *map);
 int		ft_check_map_sol(t_map *map);
 
+void	ft_print_stat(t_map *map);
+void	ft_print_map_t(char **map);
+
 void	ft_start(t_map *map);
+void	ft_start_enemy(t_player *player);
 void	ft_update(t_player player);
 void	ft_act_stat(t_player *player);
 

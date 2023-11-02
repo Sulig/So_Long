@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:49:59 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 20:31:50 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:15:54 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ static void	ft_start_player(t_player *player)
 	player->act.y = player->map->start.y;
 	player->rem = player->map->coins;
 	player->steps = 0;
+	player->enemys = 0;
 	player->win = 0;
+	player->lose = 0;
 }
 
 static t_objs	ft_init_corners(t_data data, t_objs obj)
@@ -79,6 +81,8 @@ static t_objs	ft_init_objs(t_data data, t_objs obj)
 	obj.op = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	path = "./sprites/xpm/Exit/Win_v2.xpm";
 	obj.wn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
+	path = "./sprites/xpm/Enemy/Bat.xpm";
+	obj.mn = mlx_xpm_file_to_image(data.mlx, path, &obj.img_x, &obj.img_y);
 	return (obj);
 }
 
@@ -99,6 +103,7 @@ void	ft_start(t_map *map)
 	ft_start_player(&player);
 	ft_style_map(&player);
 	player.text = ft_init_text(&player);
+	ft_start_enemy(&player);
 	ft_start_anims(&player);
 	ft_update(player);
 }

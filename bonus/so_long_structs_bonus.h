@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 20:35:24 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:11:06 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_objs
 	void		*fl;
 	void		*pl;
 	void		*cl;
+	void		*mn;
 	void		*ex;
 	void		*ep;
 	void		*op;
@@ -117,6 +118,8 @@ typedef struct s_player
 	t_lcn		act;
 	size_t		rem;
 	size_t		steps;
+	size_t		enemys;
 	int			win;
+	int			lose;
 }				t_player;
 #endif

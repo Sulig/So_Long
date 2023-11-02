@@ -6,17 +6,34 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:44:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 12:00:29 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:19:11 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_wingame(t_player *player, size_t x, size_t y)
+static void	ft_losegame(t_player *player, size_t x, size_t y)
 {
-	char	*ms;
+	player->lose = 1;
+	player->map->map[y][x] = 'M';
+	player->steps++;
+	ft_act_stat(player);
+	player->map->map[player->act.y][player->act.x] = '0';
+	player->act.x = x;
+	player->act.y = y;
+	ft_paint_actmap(player->data, player->objs, player->map->map);
+	if (player->lose)
+	{
+		ft_printf("\033[1;31m\n~ **************************************** ~\n");
+		ft_printf("\n ~\t\t So Bad!\t\t ~\n");
+		ft_printf(" ~ \t\tYou Died!\t\t ~\n");
+		ft_printf("\n~ **************************************** ~\n\n");
+		ft_printf("\033[1;33mClose the game with ESC or close the window\n\n");
+	}
+}
 
-	ms = "Well done!";
+static void	ft_wingame(t_player *player, size_t x, size_t y)
+{
 	player->map->map[y][x] = 'S';
 	if (player->rem == 0)
 	{
@@ -39,11 +56,13 @@ void	ft_wingame(t_player *player, size_t x, size_t y)
 	}
 }
 
-void	ft_move(t_player *player, size_t x, size_t y)
+static void	ft_move(t_player *player, size_t x, size_t y)
 {
 	if (player->map->map[y][x] == 'E')
 		ft_wingame(player, x, y);
-	else if (player->map->map[y][x] != '1' && !player->win)
+	else if (player->map->map[y][x] == 'M' && !player->lose)
+		ft_losegame(player, x, y);
+	else if (player->map->map[y][x] != '1' && !player->win && !player->lose)
 	{
 		if (player->map->map[y][x] == 'C' && player->rem != 0)
 			player->rem--;

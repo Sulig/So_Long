@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:47:53 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 13:48:08 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:53:59 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	ft_paint_actmap(t_data data, t_objs obj, char **map)
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.pl, x, y);
 			if (map[y / obj.img_y][x / obj.img_x] == 'E')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.ex, x, y);
+			if (map[y / obj.img_y][x / obj.img_x] == 'M')
+				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.mn, x, y);
 			if (map[y / obj.img_y][x / obj.img_x] == 'W')
 				mlx_put_image_to_window(data.mlx, data.mlx_win, obj.wn, x, y);
 			x += obj.img_x;
