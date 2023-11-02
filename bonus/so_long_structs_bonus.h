@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 15:52:21 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:34:12 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_objs
 	void		*ep;
 	void		*op;
 	void		*wn;
+	void		*bl;
 }				t_objs;
 
 typedef struct s_anim
@@ -95,6 +96,7 @@ typedef struct s_text
 	int			img_y;
 	void		*tx;
 	void		*nl;
+	void		*bl;
 	void		*ze;
 	void		*on;
 	void		*tw;

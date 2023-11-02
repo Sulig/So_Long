@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:22:51 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/31 13:49:11 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:34:18 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,13 @@ t_text	ft_init_text(t_player *player)
 	t_text	text;
 
 	data = player->data;
+	text.img_x = 32;
+	text.img_y = 32;
+	path = "./sprites/xpm/Others/Black_Pixel_1.xpm";
+	text.bl = mlx_xpm_file_to_image(data.mlx, path, &text.img_x, &text.img_y);
 	text.img_x = 90;
 	text.img_y = 30;
 	text = ft_init_tx(data, text);
-	text.img_x = 6;
-	text.img_y = 8;
 	path = "./sprites/xpm/Text/8.xpm";
 	text.ei = mlx_xpm_file_to_image(data.mlx, path, &text.img_x, &text.img_y);
 	path = "./sprites/xpm/Text/9.xpm";
