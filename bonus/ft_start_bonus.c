@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:49:59 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 20:18:10 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:47:57 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	ft_start(t_map *map)
 	ft_start_player(&player);
 	ft_style_map(&player);
 	player.text = ft_init_text(&player);
+	ft_act_stat(&player);
 	ft_start_enemy(&player);
 	ft_start_anims(&player);
 	ft_update(player);

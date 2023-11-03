@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:22:51 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 20:34:18 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:40:38 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,19 +98,15 @@ static void	ft_print_num(t_player *player, size_t num, size_t x, size_t y)
 
 void	ft_act_stat(t_player *player)
 {
-	t_data	data;
-	t_objs	obj;
 	size_t	x;
 	size_t	y;
 
-	data = player->data;
-	obj = player->objs;
-	x = player->map->exit.x * obj.img_x;
-	y = player->map->exit.y * obj.img_y;
+	x = player->map->exit.x;
+	y = player->map->exit.y;
 	ft_print_num(player, player->steps, 119, 30);
 	ft_print_num(player, player->rem, 119, 41);
 	if (player->rem == 0)
-		mlx_put_image_to_window(data.mlx, data.mlx_win, obj.op, x, y);
+		player->map->map[y][x] = 'O';
 }
 
 t_text	ft_init_text(t_player *player)
@@ -133,6 +129,5 @@ t_text	ft_init_text(t_player *player)
 	text.ni = mlx_xpm_file_to_image(data.mlx, path, &text.img_x, &text.img_y);
 	mlx_put_image_to_window(data.mlx, data.mlx_win, text.tx, 75, 25);
 	player->text = text;
-	ft_act_stat(player);
 	return (text);
 }

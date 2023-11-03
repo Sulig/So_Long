@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/11/02 20:34:15 by sadoming         ###   ########.fr        #
+#    Updated: 2023/11/03 14:41:16 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ LIBB = so_long_bonus.h so_long_structs_bonus.h
 SRCB = so_long_main_bonus ft_check_file_bonus ft_check_map_sol_bonus ft_man_struc_bonus\
 	  ft_print_map_t_bonus ft_start_bonus ft_paint_map_bonus ft_game_bonus ft_exitgame_bonus\
 	  ft_text_bonus ft_start_enemy_bonus ft_anim_keys_bonus ft_anim_player_bonus\
-	  ft_anim_enemy_bonus ft_animate_bonus ft_move_enemys_bonus ft_lose_game_bonus
+	  ft_anim_enemy_bonus ft_animate_bonus ft_move_enemys_bonus ft_lose_game_bonus\
+	  ft_paint_act_map_bonus
 
 OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
 OBJB = $(addprefix $(DIRDB), $(addsuffix .o, $(SRCB)))

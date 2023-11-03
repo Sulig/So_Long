@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:44:16 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/02 19:38:44 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:45:49 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 static void	ft_win_game(t_player *player, size_t x, size_t y)
 {
 	player->map->map[y][x] = 'S';
+	player->steps++;
+	player->map->map[player->act.y][player->act.x] = '0';
+	player->act.x = x;
+	player->act.y = y;
+	ft_act_stat(player);
 	if (player->rem == 0)
 	{
 		player->win = 1;
 		player->map->map[y][x] = 'W';
 	}
-	player->steps++;
-	ft_act_stat(player);
-	player->map->map[player->act.y][player->act.x] = '0';
-	player->act.x = x;
-	player->act.y = y;
 	ft_paint_actmap(player->data, player->objs, player->map->map);
 	if (player->win)
 	{
@@ -38,11 +38,11 @@ static void	ft_win_game(t_player *player, size_t x, size_t y)
 
 static void	ft_move(t_player *player, size_t x, size_t y)
 {
-	if (player->map->map[y][x] == 'E' && !player->lose)
+	if (player->map->map[y][x] == 'E' || player->map->map[y][x] == 'O')
 		ft_win_game(player, x, y);
-	else if (player->map->map[y][x] == 'M' && !player->lose)
+	else if (player->map->map[y][x] == 'M')
 		ft_lose_game(player);
-	else if (player->map->map[y][x] != '1' && !player->win && !player->lose)
+	else if (player->map->map[y][x] != '1')
 	{
 		if (player->map->map[y][x] == 'C' && player->rem != 0)
 			player->rem--;
@@ -53,9 +53,9 @@ static void	ft_move(t_player *player, size_t x, size_t y)
 		player->steps++;
 		player->act.x = x;
 		player->act.y = y;
+		ft_act_stat(player);
 		player->map->map[y][x] = 'P';
 		ft_paint_actmap(player->data, player->objs, player->map->map);
-		ft_act_stat(player);
 	}
 }
 
