@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 19:22:51 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/03 14:40:38 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:20:49 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,12 @@ t_text	ft_init_text(t_player *player)
 	text.img_y = 32;
 	path = "./sprites/xpm/Others/Black_Pixel_1.xpm";
 	text.bl = mlx_xpm_file_to_image(data.mlx, path, &text.img_x, &text.img_y);
+	text.img_x = 300;
+	text.img_y = 100;
+	path = "./sprites/xpm/Text/Game_Over.xpm";
+	text.gl = mlx_xpm_file_to_image(data.mlx, path, &text.img_x, &text.img_y);
+	path = "./sprites/xpm/Text/You_Win_AL.xpm";
+	text.gw = mlx_xpm_file_to_image(data.mlx, path, &text.img_x, &text.img_y);
 	text.img_x = 90;
 	text.img_y = 30;
 	text = ft_init_tx(data, text);

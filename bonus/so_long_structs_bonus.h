@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:33:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/03 14:40:35 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:10:09 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ typedef struct s_text
 	void		*tx;
 	void		*nl;
 	void		*bl;
+	void		*gl;
+	void		*gw;
 	void		*ze;
 	void		*on;
 	void		*tw;

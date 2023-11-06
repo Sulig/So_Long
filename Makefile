@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/11/03 14:41:16 by sadoming         ###   ########.fr        #
+#    Updated: 2023/11/06 17:38:02 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,28 +15,26 @@ BONUS = so_long_bonus
 
 MAP = ./maps/sadoming_map.ber
 # ------------------ #
+# Flags:
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -I mlx 
 FML = -framework OpenGL -framework AppKit
 # ------------------ #
 # Directories:
-DIR = ./src
-DIRD = ./src/
 
+DIR = ./src
 DIRB = ./bonus
-DIRDB = ./bonus/
 
 LIBFT = ./Libft
-LIBFTD = ./Libft/
-
 MLX = ./mlx
-MLXD = ./mlx/
 # ------------------- #
 # Sorces:
+
 MAK = Makefile
 
-ARL = $(LIBFTD)libft.a
-ARML = $(MLXD)libmlx.a
+ARL = $(LIBFT)/libft.a
+ARML = $(MLX)/libmlx.a
 
 LIB = so_long.h so_long_structs.h
 SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc\
@@ -44,13 +42,13 @@ SRC = so_long_main ft_check_file ft_check_map_sol ft_man_struc\
 
 LIBB = so_long_bonus.h so_long_structs_bonus.h
 SRCB = so_long_main_bonus ft_check_file_bonus ft_check_map_sol_bonus ft_man_struc_bonus\
-	  ft_print_map_t_bonus ft_start_bonus ft_paint_map_bonus ft_game_bonus ft_exitgame_bonus\
-	  ft_text_bonus ft_start_enemy_bonus ft_anim_keys_bonus ft_anim_player_bonus\
-	  ft_anim_enemy_bonus ft_animate_bonus ft_move_enemys_bonus ft_lose_game_bonus\
-	  ft_paint_act_map_bonus
+	   ft_start_bonus ft_print_map_t_bonus ft_paint_map_bonus ft_paint_act_map_bonus\
+	   ft_start_enemy_bonus ft_game_bonus ft_text_bonus ft_anim_keys_bonus\
+	   ft_anim_player_bonus ft_anim_enemy_bonus ft_animate_bonus\
+	   ft_move_enemys_bonus ft_lose_game_bonus ft_win_game_bonus ft_exitgame_bonus
 
-OBJ = $(addprefix $(DIRD), $(addsuffix .o, $(SRC)))
-OBJB = $(addprefix $(DIRDB), $(addsuffix .o, $(SRCB)))
+OBJ = $(addprefix $(DIR)/, $(addsuffix .o, $(SRC)))
+OBJB = $(addprefix $(DIRB)/, $(addsuffix .o, $(SRCB)))
 # ******************************************************************************* #
 #-------------------------------------------------------------#
 all: $(NAME)
@@ -102,12 +100,13 @@ $(ARML):
 $(ARL):
 	@echo "\033[1;93m\n * Compiling Libft -->\033[1;97m\n"
 	@make -s -C $(LIBFT)
+	@echo "\033[1;37m\n~ **************************************** ~\n"
 
-$(DIRD)%.o : $(DIR)/%.c ./src/$(LIB)
+$(DIR)/%.o : $(DIR)/%.c ./src/$(LIB)
 	$(CC) $(CFLAGS) -c $<
 
 #-------------------------------------------------------------#
-$(NAME): $(ARML) $(ARL) $(OBJ)
+$(NAME): $(MAK) $(ARML) $(ARL) $(OBJ)
 	@echo "\033[1;37m\n~ **************************************** ~\n"
 	@echo "\033[1;93m * Making so_long -->\033[1;97m\n"
 	@$(CC) $(ARML) $(ARL) $(OBJ) $(FML) -L mlx -l mlx -o $(NAME)
@@ -117,19 +116,20 @@ $(NAME): $(ARML) $(ARL) $(OBJ)
 #-------------------------------------------------------------#
 # Bonus:
 
-$(DIRDB)%.o : $(DIRB)/%.c $(DIRB)/$(LIBB)
+$(DIRB)/%.o : $(DIRB)/%.c $(DIRB)/$(LIBB)
 	$(CC) $(CFLAGS) -c $<
 
-$(BONUS): $(ARML) $(ARL) $(OBJB)
+$(BONUS): $(MAK) $(ARML) $(ARL) $(OBJB)
 	@echo "\033[1;37m\n~ **************************************** ~\n"
 	@echo "\033[1;93m * Making so_long bonus -->\033[1;97m\n"
 	@$(CC) $(ARML) $(ARL) $(OBJB) $(FML) -L mlx -l mlx -o $(BONUS)
 	@echo "\033[1;35m\n~ **************************************** ~\n"
 	@echo "  ~\t   So_Long Bonus is ready!\t ~\n"
 	@echo "~ **************************************** ~\n"
-
+#-------------------------------------------------------------#
 # ******************************************************************************* #
 # Debuging region:
+
 debug: $(NAME)
 	@echo "\033[1;34m\n~ **************************************** ~\n"
 	@echo " ~ Running ./$(NAME) $(MAP)"
@@ -143,6 +143,7 @@ debug_bonus: $(BONUS)
 	@lldb $(BONUS) $(MAP)
 
 # ------------------
+
 leaks: $(NAME)
 	@echo "\033[1;34m\n~ **************************************** ~\n"
 	@echo " ~ Running ./$(NAME) $(MAP)"
@@ -171,13 +172,14 @@ val_bonus: $(BONUS)
 
 # ********************************************************************************* #
 # Clean region
+
 clean:
 	@make -s clean -C $(MLX)
 	@make -s clean -C $(LIBFT)
-	@/bin/rm -f $(DIRD)*.o
-	@/bin/rm -f $(DIRDB)*.o
+	@/bin/rm -f $(DIR)/*.o
+	@/bin/rm -f $(DIRB)/*.o
 	@find . -name ".DS_Store" -type f -delete
-	@echo "\033[1;34m All obj removed\033[1;97m\n"
+	@echo "\033[1;34m\n All obj removed\033[1;97m\n"
 
 
 fclean: clean
@@ -193,6 +195,9 @@ clear: fclean
 	@clear
 
 re: fclean all
+re_bonus: fclean bonus
+re_trueall: clear trueall
 # -------------------- #
-.PHONY: all bonus clean clear fclean debug norm re run val trueall
+.PHONY: all bonus clean clear fclean debug leaks norm re run val trueall
+.PHONY: debug_bonus leaks_bonus re_bonus re_trueall val_bonus
 # ********************************************************************************** #

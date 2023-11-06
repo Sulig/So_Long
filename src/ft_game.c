@@ -6,13 +6,25 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 13:24:22 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/23 19:39:28 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:24:42 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_wingame(t_player *player, size_t x, size_t y)
+static void	ft_act_stat(t_player *player)
+{
+	size_t	x;
+	size_t	y;
+
+	x = player->map->exit.x;
+	y = player->map->exit.y;
+	if (player->rem == 0)
+		player->map->map[y][x] = 'O';
+	ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
+}
+
+static void	ft_wingame(t_player *player, size_t x, size_t y)
 {
 	char	*ms;
 
@@ -28,7 +40,7 @@ void	ft_wingame(t_player *player, size_t x, size_t y)
 	player->act.x = x;
 	player->act.y = y;
 	ft_paint_actmap(player->data, player->objs, player->map->map);
-	ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
+	ft_act_stat(player);
 	if (player->win)
 	{
 		ft_printf("\033[1;32m\n~ **************************************** ~\n");
@@ -39,11 +51,11 @@ void	ft_wingame(t_player *player, size_t x, size_t y)
 	}
 }
 
-void	ft_move(t_player *player, size_t x, size_t y)
+static void	ft_move(t_player *player, size_t x, size_t y)
 {
-	if (player->map->map[y][x] == 'E')
+	if (player->map->map[y][x] == 'E' || player->map->map[y][x] == 'O')
 		ft_wingame(player, x, y);
-	else if (player->map->map[y][x] != '1' && !player->win)
+	else if (player->map->map[y][x] != '1')
 	{
 		if (player->map->map[y][x] == 'C' && player->rem != 0)
 			player->rem--;
@@ -54,9 +66,9 @@ void	ft_move(t_player *player, size_t x, size_t y)
 		player->steps++;
 		player->act.x = x;
 		player->act.y = y;
+		ft_act_stat(player);
 		player->map->map[y][x] = 'P';
 		ft_paint_actmap(player->data, player->objs, player->map->map);
-		ft_printf("Steps: %u\tKeys: %u\n", player->steps, player->rem);
 	}
 }
 

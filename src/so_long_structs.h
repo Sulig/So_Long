@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:04:36 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/23 19:41:55 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:11:42 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_objs
 	void		*cl;
 	void		*ex;
 	void		*ep;
+	void		*op;
 	void		*wn;
 }				t_objs;
 

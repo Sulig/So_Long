@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:45:41 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/03 14:40:44 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:47:37 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	ft_print_map_t(char **map);
 
 void	ft_start(t_map *map);
 void	ft_start_enemy(t_player *player);
-void	ft_update(t_player player);
-void	ft_lose_game(t_player *player);
 void	ft_act_stat(t_player *player);
 void	ft_move_bat(t_player *player);
+void	ft_update(t_player player);
+void	ft_lose_game(t_player *player);
+void	ft_win_game(t_player *player);
 
 void	ft_style_map(t_player *player);
 void	ft_paint_actmap(t_data data, t_objs obj, char **map);
