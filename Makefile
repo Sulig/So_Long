@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/11/06 17:38:02 by sadoming         ###   ########.fr        #
+#    Updated: 2023/11/06 19:51:53 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ FML = -framework OpenGL -framework AppKit
 DIR = ./src
 DIRB = ./bonus
 
+TEST = ./Tests
 LIBFT = ./Libft
 MLX = ./mlx
 # ------------------- #
@@ -55,6 +56,42 @@ all: $(NAME)
 
 bonus: $(BONUS)
 #-------------------------------------------------------------#
+#-------------------------------------------------------------#
+help:
+	@echo "\033[1;37m\n ~ Posible comands:\n"
+	@echo "\t~ all  \t\t #-> Make $(NAME)\n"
+	@echo "\t~ bonus \t #-> Make $(BONUS)\n"
+	@echo "\t~ clean \t #-> Clean *.o\n"
+	@echo "\t~ fclean \t #-> Clean all\n"
+	@echo "\t~ clear \t #-> Clean all & clear\n"
+	@echo "\t~ norm \t\t #-> Run norminette\n"
+	@echo "\t~ trueall \t #-> Make norm + make so_long & so_long_bonus + make run + make run_bonus\n"
+	@echo "\t~ leaks \t #-> Run so_long with LEAKS & $(MAP)\n"
+	@echo "\t~ leaks_bonus \t #-> Run so_long_bonus with LEAKS & $(MAP)\n"
+	@echo "\t~ run  \t\t #-> Run so_long with $(MAP)\n"
+	@echo "\t~ run_bonus \t #-> Run so_long_bonus with $(MAP)\n"
+	@echo "\t~ test \t\t #-> Test so_long with LEAKS & error_maps\n"
+	@echo "\t~ test_bonus \t #-> Test so_long_bonus with LEAKS & error_maps\n"
+	@echo "\t~ re   \t\t #-> Redo so_long\n"
+	@echo "\t~ re_bonus \t #-> Redo bonus\n"
+	@echo "\t~ re_trueall \t #-> Redo & make trueall\n"
+	@echo "\n~ Extra comands:\n"
+	@echo "\t~ debug \t #-> Ejecutes lldb $(NAME) $(MAP)\n"
+	@echo "\t~ debug_bonus \t #-> Ejecutes lldb $(BONUS) $(MAP)\n"
+	@echo "\t~ leaks \t #-> Ejecutes leaks $(NAME) $(MAP)\n"
+	@echo "\t~ leaks_bonus \t #-> Ejecutes leaks $(BONUS) $(MAP)\n"
+	@echo "\t~ val  \t\t #-> Run Valgrind $(NAME) $(MAP)\n"
+	@echo "\t~ val_bonus \t #-> Run valgrind $(BONUS) $(MAP)\n"
+	@make -s author
+
+#-------------------------------------------------------------#
+#-------------------------------------------------------------#
+author:
+	@echo "\033[1;34m\n~ **************************************** ~\n"
+	@echo "\n   ~ \t      Made by Sadoming \t        ~\n"
+	@echo "\n~ **************************************** ~\n\n"
+#-------------------------------------------------------------#
+#-------------------------------------------------------------#
 trueall:
 	@make -s norm
 	@echo "\033[0;37m\n~ **************************************** ~\n"
@@ -76,6 +113,7 @@ norm:
 	@echo "\033[1;32m\n ~ Norminette bonus:\t~ OK"
 
 #-------------------------------------------------------------#
+#-------------------------------------------------------------#
 run: $(NAME)
 	@echo "\033[1;34m\n~ **************************************** ~\n"
 	@echo " ~ Running ./$(NAME) $(MAP)"
@@ -89,6 +127,15 @@ run_bonus: $(BONUS)
 	@echo "\n~ **************************************** ~\n"
 	@./$(BONUS) $(MAP)
 
+#-------------------------------------------------------------#
+#-------------------------------------------------------------#
+# Test Region:
+test: $(NAME)
+	@make -s leaks -C $(TEST)
+
+test_bonus: $(BONUS)
+	@make -s leaks_bonus -C $(TEST)
+#-------------------------------------------------------------#
 #-------------------------------------------------------------#
 # ******************************************************************************* #
 # Compiling Region:
