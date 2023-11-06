@@ -2,44 +2,42 @@
 Resumen: Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte
 trabajar con texturas y sprites y algunos otros elementos básicos de jugabilidad.
 
-!! WORK IN PROGRESS !!
-
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
-- So_long code *(En progresso)*
+- So_long + So_long_bonus
 - MinilibX *Para Debian*
 - Mapas
-- Tests *(Tests de mapas erroneos)*
+- Tests de mapas erroneos
 - Map Generator
 - Subject
 
 ***
-## Comandos:
-### Ejecutar:
+## Comandos Esenciales:
+
+Make so_long
+
+    make all
+
+Make so_long_bonus
+
+    make bonus
+
+Run so_long with def map
 
     make run
 
-### Debuggeador:
+Run so_long_bonus with def map
 
-    make debug
+    make run_bonus
 
-*Valgrind (Solo funcionara si tienes valgrind)*
-
-    make valgrind
-***
-### Limpiar archivos innecessarios:
-
-Limpia solo *.o y los .out
-
-    make clean
-
-Limpieza profunda + borrado de .out.dSYM
-
-    make fclean
-    
-Igual que fclean + limpia la pantalla
+Clean all
 
     make clear
+
+For more comands ejecute
+
+    make help
+
 ***
 ~ Made by sadoming ~
 ***
