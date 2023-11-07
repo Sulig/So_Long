@@ -1,5 +1,10 @@
 # so_long
-Resumen: Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte
+
+~ Ended on: 06/11 and graded with 125/100
+
+***
+## Resumen: 
+Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte
 trabajar con texturas y sprites y algunos otros elementos básicos de jugabilidad.
 
 ***
@@ -40,5 +45,5 @@ For more comands ejecute
     make help
 
 ***
-~ Made by sadoming ~  ~ Started on: 21/09   ~ Ended on: 06/11
+~ Made by sadoming ~  ~ Started on: 21/09
 ***
