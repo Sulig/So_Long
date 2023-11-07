@@ -57,7 +57,7 @@ char	*ft_itoa(int n)
 		cnt++;
 	}
 	cnt += ft_numlen(num, 10);
-	str = calloc(cnt + 1, 1);
+	str = ft_calloc(sizeof(char), cnt + 1);
 	if (!str)
 		return (0);
 	while (cnt > 0)
@@ -79,7 +79,7 @@ char	*ft_itoa_unsig(size_t num, char *base)
 	if (num == 0)
 		cnt++;
 	cnt += ft_numlen(num, ft_strlen(base));
-	str = calloc(cnt + 1, 1);
+	str = ft_calloc(sizeof(char), cnt + 1);
 	if (!str)
 		return (0);
 	while (cnt > 0)
