@@ -40,5 +40,5 @@ For more comands ejecute
     make help
 
 ***
-~ Made by sadoming ~ Ended on: 06/11_20:00
+~ Made by sadoming ~  ~ Started on: 21/09   ~ Ended on: 06/11
 ***
