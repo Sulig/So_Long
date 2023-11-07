@@ -2,6 +2,7 @@
 Resumen: Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte
 trabajar con texturas y sprites y algunos otros elementos básicos de jugabilidad.
 
+***
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
 - So_long + So_long_bonus
@@ -37,7 +38,7 @@ Clean all
 For more comands ejecute
 
     make help
-
+***
 ***
 ~ Made by sadoming ~ Ended on: 06/11_20:00
 ***
