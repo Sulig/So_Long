@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:29:20 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 16:05:01 by sadoming         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:39:08 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,10 @@ static char	*ft_strnext(const char *str, char *to_fill, size_t pos)
 */
 char	*ft_strinter(const char *str, const char *inter, size_t pos)
 {
-	size_t	cnt;
 	size_t	len_s;
 	size_t	len_i;
 	char	*join;
 
-	cnt = 0;
 	len_s = ft_strllen(str);
 	len_i = ft_strllen(inter);
 	if (len_s == 0)
