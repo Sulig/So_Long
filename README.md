@@ -1,4 +1,4 @@
-# so_long
+# So_Long
 
 ~ Ended on: 06/11 and graded with 125/100
 
@@ -11,10 +11,9 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
 - So_long + So_long_bonus
-- MinilibX *Para Debian*
-- Mapas
+- MinilibX *Para Debian & MacOS*
+- Mapas + Map Generator
 - Tests de mapas erroneos
-- Map Generator
 - Subject
 
 ***
