@@ -1,6 +1,6 @@
 # So_Long
 
-~ Ended on: 06/11 and graded with 125/100
+~ Started on: 21/09 ~ *** ~ Ended on: 06/11 and graded with 125/100
 
 ***
 ## Resumen: 
@@ -44,5 +44,5 @@ For more comands ejecute
     make help
 
 ***
-~ Made by sadoming ~  ~ Started on: 21/09
+~ Made by sadoming ~ 
 ***
