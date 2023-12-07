@@ -1,6 +1,6 @@
 # So_Long
 
-~ Started on: 21/09 ~ *** ~ Ended on: 06/11 and graded with 125/100
+~ Started on: 21/09 ~ *** ~ Ended on: 06/11 ~~~ Graded with 125/100
 
 ***
 ## Resumen: 
