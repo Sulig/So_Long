@@ -46,3 +46,5 @@ For more comands ejecute
 ***
 ~ Made by sadoming ~ 
 ***
+
+https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
