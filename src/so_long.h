@@ -18,8 +18,6 @@
 # include "../mlx/mlx.h"
 # include "./so_long_structs.h"
 
-void	color(char color);
-
 int		ft_check_format(char *file);
 int		ft_check_size(t_map *map);
 int		ft_check_sym(t_map *map);
