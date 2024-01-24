@@ -26,9 +26,6 @@ static void	ft_act_stat(t_player *player)
 
 static void	ft_wingame(t_player *player, size_t x, size_t y)
 {
-	char	*ms;
-
-	ms = "Well done!";
 	player->map->map[y][x] = 'S';
 	if (player->rem == 0)
 	{
