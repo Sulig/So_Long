@@ -10,11 +10,12 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 ***
 ## Contenido del repositorio:
 - Libft + ft_printf + GetNextLine
-- So_long + So_long_bonus
 - MinilibX *Para Debian & MacOS*
+- So_long + So_long_bonus
+- Recursos Graficos (Sprites)
 - Mapas + Map Generator
 - Tests de mapas erroneos
-- Subject
+- Subject ES
 
 ***
 ## Comandos Esenciales:
