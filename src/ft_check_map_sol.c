@@ -82,7 +82,7 @@ int	ft_check_for_sol(t_map *map)
 	ft_path(map->sol, map->exit, map->start.y, map->start.x);
 	ok = ft_check_behind(map->sol, map->exit);
 	size = 0;
-	while (map->map[size] && ok == 1)
+	while (map->map[size] && ok)
 	{
 		len = 0;
 		while (map->map[size][len] && ok == 1)
@@ -105,10 +105,8 @@ int	ft_check_map_sol(t_map *map)
 	int		ok;
 
 	ft_locate(map);
-	ok = 0;
-	if (ft_check_for_sol(map))
-		ok = 1;
-	if (ok == 0)
+	ok = ft_check_for_sol(map);
+	if (!ok)
 		ft_printf("\033[1;31mError\nThe map don't have solution!\n");
 	return (ok);
 }
