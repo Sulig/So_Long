@@ -15,7 +15,7 @@ trabajar con texturas y sprites y algunos otros elementos básicos de jugabilida
 - Recursos Graficos (Sprites)
 - Mapas + Map Generator
 - Tests de mapas erroneos
-- Subject ES
+- [Subject ES](https://github.com/Sulig/So_Long/blob/master/SoLong.pdf)
 
 ***
 ## Comandos Esenciales:
