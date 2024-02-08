@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 17:07:32 by sadoming          #+#    #+#              #
-#    Updated: 2023/11/06 19:51:53 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/08 19:52:45 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -223,14 +223,13 @@ val_bonus: $(BONUS)
 clean:
 	@make -s clean -C $(MLX)
 	@make -s clean -C $(LIBFT)
-	@/bin/rm -f $(DIR)/*.o
-	@/bin/rm -f $(DIRB)/*.o
+	@/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJB)
 	@find . -name ".DS_Store" -type f -delete
 	@echo "\033[1;34m\n All obj removed\033[1;97m\n"
 
 
 fclean: clean
-	@make -s clean -C $(MLX)
 	@make -s fclean -C $(LIBFT)
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(BONUS)
