@@ -6,7 +6,7 @@
 #    By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 16:14:42 by sadoming          #+#    #+#              #
-#    Updated: 2023/09/29 17:50:13 by sadoming         ###   ########.fr        #
+#    Updated: 2024/02/08 19:56:05 by sadoming         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,7 @@ norm:
 	@echo "\033[1;32m \nLibft norminette:\t~ OK\n"
 #-------------------------------------------------------------#
 clean:
-	@/bin/rm -f *.o
-	@/bin/rm -f $(STR)*.o
+	@/bin/rm -f $(OBJ)
 
 fclean : clean
 	@/bin/rm -f $(NAME)
