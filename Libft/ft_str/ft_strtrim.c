@@ -28,14 +28,9 @@ char	*ft_strtrim(const char *s1, const char *set)
 			break ;
 		ln++;
 	}
-	cnt = 0;
-	while (s1[cnt + 1])
-		cnt++;
-	while (cnt >= 0)
-	{
-		if (ft_strchr(set, s1[cnt]) != 0)
+	cnt = ft_strlen(s1);
+	while (--cnt)
+		if (!ft_strchr(set, s1[cnt]))
 			break ;
-		cnt--;
-	}
 	return (ft_strcpyl((char *) s1 + ln, (cnt + 1) - ln));
 }
