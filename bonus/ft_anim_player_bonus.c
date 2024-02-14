@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:56:23 by sadoming          #+#    #+#             */
-/*   Updated: 2023/11/03 12:47:02 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:29:11 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,8 @@ void	ft_anim_player(t_player *player)
 	static size_t	pos;
 	static size_t	frame;
 	size_t			time;
-	size_t			x;
-	size_t			y;
 
 	time = 900;
-	x = player->act.x;
-	y = player->act.y;
 	if ((frame % time) == 0)
 	{
 		if (pos > 3)

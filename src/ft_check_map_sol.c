@@ -6,7 +6,7 @@
 /*   By: sadoming <sadoming@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 17:13:15 by sadoming          #+#    #+#             */
-/*   Updated: 2023/10/09 16:56:55 by sadoming         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:23:44 by sadoming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static void	ft_locate(t_map *map)
 
 static void	ft_path(char **fill, t_lcn size, size_t y, size_t x)
 {
-	if (y < 0 || x < 0)
-		return ;
 	if (y == size.y && x == size.x)
 	{
 		if (fill[y][x])
