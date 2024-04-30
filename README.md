@@ -2,6 +2,10 @@
 
 ~ Started on: 21/09/2023 ~ *** ~ Ended on: 06/11/2023 ~~~ Graded with 125/100
 
+[![Stars](https://img.shields.io/github/stars/Sulig/So_Long?color=ffff00&label=Stars&logo=Stars&style=?style=flat)](https://github.com/Sulig/So_Long)
+[![Size](https://img.shields.io/github/repo-size/Sulig/So_Long?color=blue&label=Size&logo=Size&style=?style=flat)](https://github.com/Sulig/So_Long)
+[![Activity](https://img.shields.io/github/last-commit/Sulig/So_Long?color=orange&label=Last%20Commit&style=flat)](https://github.com/Sulig/So_Long)
+
 ***
 ## Resumen: 
 Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte
