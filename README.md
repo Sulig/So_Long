@@ -6,6 +6,8 @@
 [![Size](https://img.shields.io/github/repo-size/Sulig/So_Long?color=blue&label=Size&logo=Size&style=?style=flat)](https://github.com/Sulig/So_Long)
 [![Activity](https://img.shields.io/github/last-commit/Sulig/So_Long?color=orange&label=Last%20Commit&style=flat)](https://github.com/Sulig/So_Long)
 
+![So-long](https://github.com/Sulig/So_Long/blob/master/So_Long_Play.gif?raw=true)
+
 ***
 ## Resumen: 
 Este proyecto es un pequeño juego en 2D. Está diseñado para hacerte
